@@ -21,6 +21,7 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
 
         this.onReadMorePress = this.onReadMorePress.bind(this);
         this.onViewAllPress = this.onViewAllPress.bind(this);
+        this.onNewsPress = this.onNewsPress.bind(this);
     }
 
     componentDidMount() {
@@ -33,6 +34,10 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
 
     onViewAllPress() {
         this.props.navigation.navigate("IPO");
+    }
+
+    onNewsPress() {
+        this.props.navigation.navigate("NewsDetailScreen");
     }
 
     render() {
@@ -207,7 +212,7 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
                 <View style={{ paddingHorizontal: 10, marginTop: 20, flexDirection: 'row', justifyContent: 'space-between' }}>
                     <Text style={{ fontSize: 16, fontWeight: '450', color: "#36454F" }}>Latest News</Text>
                 </View>
-                <View>
+                <TouchableNativeFeedback onPress={this.onNewsPress}>
                     <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                         <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                             <Image
@@ -228,7 +233,7 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
                         </View>
                     </View>
                     <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                </View>
+                </TouchableNativeFeedback>
 
                 <View>
                     <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>

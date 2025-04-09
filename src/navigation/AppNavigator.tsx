@@ -6,6 +6,7 @@ import WelcomeScreen from '../screens/WelcomeScreen'; // Import the WelcomeScree
 import PhoneScreen from '../screens/PhoneScreen';
 import OtpScreen from '../screens/OtpScreen';
 import HomeScreen from '../screens/HomeScreen';
+import NewsDetailScreen from '../screens/NewsDetail';
 
 // Define the type for route parameters
 export type RootStackParamList = {
@@ -14,6 +15,7 @@ export type RootStackParamList = {
   PhoneScreen: undefined; 
   OtpScreen: undefined; 
   HomeScreen: undefined; 
+  NewsDetailScreen: undefined; 
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -48,6 +50,11 @@ const AppNavigator = () => {
       <Stack.Screen
         name="HomeScreen"
         component={HomeScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="NewsDetailScreen"
+        component={NewsDetailScreen}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

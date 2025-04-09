@@ -43,7 +43,7 @@ class OtpScreen extends Component<OtpScreenProps, OtpScreenState> {
                         <MaterialIcons
                             name="arrow-back"
                             size={22}  // Enlarge the icon when focused
-                            color={"#232b2b"}
+                            color={"#36454F"}
                             style={{}}
                         />
                     </TouchableOpacity>

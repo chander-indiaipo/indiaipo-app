@@ -41,7 +41,7 @@ class WelcomeScreen extends Component<WelcomeScreenProps, WelcomeScreenState> {
                         marginBottom: 20, // Optional margin
                     }}
                 />
-                <Text style={{ fontSize: 24, fontWeight: 'bold', textAlign: 'center', color: '#232b2b' }}>
+                <Text style={{ fontSize: 24, fontWeight: 'bold', textAlign: 'center', color: '#36454F' }}>
                     Get ready to be listed
                 </Text>
 
