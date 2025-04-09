@@ -16,7 +16,7 @@
     "resolveJsonModule": true,                    // Allow importing JSON files
     "outDir": "./dist",                           // Output directory for compiled files
     "baseUrl": "./",                              // Base directory for resolving non-relative imports
-    "types": ["react", "react-native"]            // Include type definitions for React and React Native
+    "types": ["react", "react-native", "node"]            // Include type definitions for React and React Native
   },
   "include": [
     "src/**/*"                                    // Include all TypeScript/JS files under 'src'
