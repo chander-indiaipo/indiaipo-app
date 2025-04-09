@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "es2016",                           // JavaScript version to compile to
+    "module": "commonjs",                         // Module system to use
+    "jsx": "react-native",                        // React JSX support for React Native
+    "moduleResolution": "node",                   // Use Node module resolution strategy
+    "allowJs": true,                              // Allow JavaScript files in the project
+    "checkJs": false,                             // Disable error checking for JavaScript files
+    "skipLibCheck": true,                         // Skip type checking of all declaration files
+    "esModuleInterop": true,                      // Enables interop between CommonJS and ES Modules
+    "forceConsistentCasingInFileNames": true,     // Ensures consistent casing for file names
+    "noImplicitAny": false,                       // Disable implicit 'any' type errors
+    "strictNullChecks": false,                    // Disable strict null checks
+    "noUnusedLocals": true,                       // Report unused local variables
+    "noUnusedParameters": true,                   // Report unused function parameters
+    "resolveJsonModule": true,                    // Allow importing JSON files
+    "outDir": "./dist",                           // Output directory for compiled files
+    "baseUrl": "./",                              // Base directory for resolving non-relative imports
+    "types": ["react", "react-native"]            // Include type definitions for React and React Native
+  },
+  "include": [
+    "src/**/*"                                    // Include all TypeScript/JS files under 'src'
+  ],
+  "exclude": [
+    "node_modules",                               // Exclude node_modules folder
+    "dist"                                        // Exclude the output folder
+  ]
+}
