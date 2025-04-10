@@ -6,7 +6,7 @@ import WelcomeScreen from '../screens/WelcomeScreen'; // Import the WelcomeScree
 import PhoneScreen from '../screens/PhoneScreen';
 import OtpScreen from '../screens/OtpScreen';
 import HomeScreen from '../screens/HomeScreen';
-import NewsDetailScreen from '../screens/NewsDetail';
+import NewsDetailScreen from '../screens/NewsDetailScreen';
 
 // Define the type for route parameters
 export type RootStackParamList = {

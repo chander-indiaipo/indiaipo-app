@@ -5,6 +5,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons'; // Import Ionicons
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'; // Import Ionicons
 import AntDesign from 'react-native-vector-icons/AntDesign'; // Import Ionicons
 import { ScrollView, TextInput, TouchableNativeFeedback } from 'react-native-gesture-handler';
+import YoutubePlayer from 'react-native-youtube-iframe';
 import axios from 'axios';
 
 interface DashboardScreenProps {
@@ -526,6 +527,17 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
 
                     </View>
                 </ScrollView>
+                <View style={{ paddingHorizontal: 10, marginTop: 20, flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <Text style={{ fontSize: 16, fontWeight: '600', color: "#36454F" }}>About Us</Text>
+                </View>
+                <View style={{ width: "100%", marginTop: 10,paddingHorizontal:10,borderRadius:10 }}>
+                    <YoutubePlayer
+                        height={200}
+                        play={false}
+                        style={{borderRadius:10}}
+                        videoId={'6gE4oTeJmxY'} // Extracted from the YouTube URL
+                    />
+                </View>
 
                 <View style={{ paddingHorizontal: 10, marginTop: 20, flexDirection: 'row', justifyContent: 'space-between' }}>
                     <Text style={{ fontSize: 16, fontWeight: '450', color: "#36454F" }}>Upcoming IPOs</Text>
