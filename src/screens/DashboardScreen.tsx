@@ -541,7 +541,7 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
 
                 <View style={{ paddingHorizontal: 10, marginTop: 20, flexDirection: 'row', justifyContent: 'space-between' }}>
                     <Text style={{ fontSize: 16, fontWeight: '450', color: "#36454F" }}>Upcoming IPOs</Text>
-                    <TouchableOpacity onPress={this.onViewAllPress}>
+                    <TouchableOpacity onPress={null}>
                         <Text style={{ fontSize: 14, fontWeight: '450', color: "#225cc7" }}>View All</Text>
                     </TouchableOpacity>
                 </View>

@@ -13,6 +13,7 @@ import OtpScreen from './OtpScreen';
 import PhoneScreen from './PhoneScreen';
 import NewsScreen from './NewsScreen';
 import IpoScreen from './IpoScreen';
+import ServicesScreen from './ServicesScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -49,12 +50,12 @@ class HomeScreen extends Component {
                     }}
                 />
                 <Tab.Screen
-                    name="IPO"
-                    component={IpoScreen}
+                    name="Services"
+                    component={ServicesScreen}
                     options={{
                         tabBarIcon: ({ color, size, focused }) => (
-                            <MaterialCommunityIcons
-                                name="finance"
+                            <MaterialIcons
+                                name="workspace-premium"
                                 size={focused ? 20 : 18}  // Enlarge the icon when focused
                                 color={color}
                                 style={{
