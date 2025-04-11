@@ -3,17 +3,40 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { connect } from 'react-redux';
+import { AnyAction } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
+import { getUsers } from '../api/ApiMiddleware';
+import { User } from '../models/User';
+import { RootState } from '../redux/store';
 
-interface OtpScreenProps {
+// Own props passed to the component
+interface OwnProps {
     navigation: any;
 }
-interface OtpScreenState {
+
+// Props from Redux state
+interface StateProps {
+    users: User[];
+    loading: boolean;
+    error: string | null;
+    abc:string
+}
+
+// Props from Redux dispatch
+interface DispatchProps {
+    getUsers: () => void;
+}
+
+// Combine all props
+type Props = OwnProps & StateProps & DispatchProps;
+interface State {
 }
 
 
-class OtpScreen extends Component<OtpScreenProps, OtpScreenState> {
+class OtpScreen extends Component<Props, State> {
     // Initialize state with a default value
-    constructor(props: OtpScreenProps) {
+    constructor(props: Props) {
         super(props);
         this.state = {
         };
@@ -29,6 +52,7 @@ class OtpScreen extends Component<OtpScreenProps, OtpScreenState> {
 
     onNextPress() {
         this.props.navigation.navigate("HomeScreen");
+        // this.props.getUsers();
     }
 
     onGoBack() {
@@ -90,4 +114,19 @@ class OtpScreen extends Component<OtpScreenProps, OtpScreenState> {
     }
 }
 
-export default OtpScreen;
+// Map Redux state to props
+const mapStateToProps = (state: RootState): StateProps => ({
+    users: state.userState.users,
+    loading: state.userState.loading,
+    error: state.userState.error,
+    abc:state.userState.abc
+  });
+  
+  // Map dispatch to props
+  const mapDispatchToProps = (
+    dispatch: ThunkDispatch<RootState, undefined, AnyAction>
+  ): DispatchProps => ({
+    getUsers: () => dispatch(getUsers()),
+  });
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(OtpScreen);
