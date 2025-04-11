@@ -29,7 +29,7 @@ class ServicesScreen extends Component<ServicesScreenProps, ServicesScreenState>
     render() {
         return (
             <View style={{ flex: 1, backgroundColor: '#fff' }}>
-                <View style={{ paddingTop: 15, paddingLeft: 10, paddingRight: 10, paddingBottom: 10, flexDirection: 'row', justifyContent: "space-between" }}>
+                <View style={{ paddingTop: 15, paddingLeft: 10,backgroundColor:"#fff", paddingRight: 10, paddingBottom: 10, flexDirection: 'row', justifyContent: "space-between" }}>
                     <View>
                         <Text style={{ fontSize: 20, color: "#36454F", fontWeight: 'bold' }}>Services</Text>
                     </View>
@@ -48,7 +48,7 @@ class ServicesScreen extends Component<ServicesScreenProps, ServicesScreenState>
                 <ScrollView showsVerticalScrollIndicator={false}>
 
                     <View style={{ paddingHorizontal: 10, flexDirection: 'row', justifyContent: 'space-between', marginTop: 10 }}>
-                        <View style={{ padding: 10, backgroundColor: "#ffe9e4", borderRadius: 10, width: "47%" }}>
+                        <View style={{ padding: 10, backgroundColor: "#ffe9e4", borderRadius: 10, width: "47%",elevation:5 }}>
                             <View style={{ width: "50%", backgroundColor: "#fff", padding: 15, aspectRatio: 1, borderRadius: 300 }}>
                                 <Image
                                     source={require('../assets/images/virtual.png')} // Path to your local image
@@ -67,7 +67,7 @@ class ServicesScreen extends Component<ServicesScreenProps, ServicesScreenState>
                                 </View>
                             </TouchableNativeFeedback>
                         </View>
-                        <View style={{ padding: 10, backgroundColor: "#dbffdb", borderRadius: 10, width: "47%" }}>
+                        <View style={{ padding: 10, backgroundColor: "#dbffdb", borderRadius: 10, width: "47%",elevation:5 }}>
                             <View style={{ width: "50%", backgroundColor: "#fff", padding: 15, aspectRatio: 1, borderRadius: 300 }}>
                                 <Image
                                     source={require('../assets/images/interview.png')} // Path to your local image
@@ -89,7 +89,59 @@ class ServicesScreen extends Component<ServicesScreenProps, ServicesScreenState>
                     </View>
 
                     <View style={{ paddingHorizontal: 10, flexDirection: 'row', justifyContent: 'space-between', marginTop: 15 }}>
-                        <View style={{ padding: 10, backgroundColor: "#e9f0fb", borderRadius: 10, width: "100%" }}>
+                        <View style={{ padding: 10, backgroundColor: "#e9f0fb", borderRadius: 10, width: "100%",elevation:5 }}>
+                            <View style={{ flexDirection: 'row' }}>
+                                <View style={{ width: "20%", backgroundColor: "#fff", padding: 15, aspectRatio: 1, borderRadius: 300 }}>
+                                    <Image
+                                        source={require('../assets/images/sme.png')} // Path to your local image
+                                        style={{
+                                            width: "100%", // Set width of the image
+                                            height: "100%", // Set height of the image
+                                            borderRadius: 10
+                                        }}
+                                    />
+                                </View>
+                                <View style={{ paddingHorizontal: 10, width: "80%" }}>
+                                    <Text style={{ fontSize: 16, color: "#225cc7", fontWeight: 'bold', marginTop: 10 }}>SME IPO Services</Text>
+                                    <Text style={{ fontSize: 14, color: "#666", marginTop: 5, marginBottom: 25 }}>Guidance for small and medium enterprises</Text>
+                                </View>
+                            </View>
+                            <TouchableNativeFeedback>
+                                <View style={{ paddingHorizontal: 15, paddingVertical: 5, backgroundColor: "#225cc7", borderRadius: 10, justifyContent: 'center', alignItems: 'center' }}>
+                                    <Text style={{ fontSize: 16, color: "#fff" }}>Book Now</Text>
+                                </View>
+                            </TouchableNativeFeedback>
+                        </View>
+                    </View>
+
+                    <View style={{ paddingHorizontal: 10, flexDirection: 'row', justifyContent: 'space-between', marginTop: 15 }}>
+                        <View style={{ padding: 10, backgroundColor: "#e9f0fb", borderRadius: 10, width: "100%",elevation:5 }}>
+                            <View style={{ flexDirection: 'row' }}>
+                                <View style={{ width: "20%", backgroundColor: "#fff", padding: 15, aspectRatio: 1, borderRadius: 300 }}>
+                                    <Image
+                                        source={require('../assets/images/company.png')} // Path to your local image
+                                        style={{
+                                            width: "100%", // Set width of the image
+                                            height: "100%", // Set height of the image
+                                            borderRadius: 10
+                                        }}
+                                    />
+                                </View>
+                                <View style={{ paddingHorizontal: 10, width: "80%" }}>
+                                    <Text style={{ fontSize: 16, color: "#225cc7", fontWeight: 'bold', marginTop: 10 }}>Large Company IPO Services</Text>
+                                    <Text style={{ fontSize: 14, color: "#666", marginTop: 5, marginBottom: 25 }}>Tailored strategies for larger corporations</Text>
+                                </View>
+                            </View>
+                            <TouchableNativeFeedback>
+                                <View style={{ paddingHorizontal: 15, paddingVertical: 5, backgroundColor: "#225cc7", borderRadius: 10, justifyContent: 'center', alignItems: 'center' }}>
+                                    <Text style={{ fontSize: 16, color: "#fff" }}>Book Now</Text>
+                                </View>
+                            </TouchableNativeFeedback>
+                        </View>
+                    </View>
+
+                    <View style={{ paddingHorizontal: 10, flexDirection: 'row', justifyContent: 'space-between', marginTop: 15 }}>
+                        <View style={{ padding: 10, backgroundColor: "#e9f0fb", borderRadius: 10, width: "100%",elevation:5 }}>
                             <View style={{ flexDirection: 'row' }}>
                                 <View style={{ width: "20%", backgroundColor: "#fff", padding: 15, aspectRatio: 1, borderRadius: 300 }}>
                                     <Image

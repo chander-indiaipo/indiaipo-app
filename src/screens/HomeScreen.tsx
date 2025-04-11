@@ -14,6 +14,7 @@ import PhoneScreen from './PhoneScreen';
 import NewsScreen from './NewsScreen';
 import IpoScreen from './IpoScreen';
 import ServicesScreen from './ServicesScreen';
+import LearnScreen from './LearnScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -56,6 +57,23 @@ class HomeScreen extends Component {
                         tabBarIcon: ({ color, size, focused }) => (
                             <MaterialIcons
                                 name="workspace-premium"
+                                size={focused ? 20 : 18}  // Enlarge the icon when focused
+                                color={color}
+                                style={{
+                                    transform: [{ scale: focused ? 1.1 : 1 }] // Apply scale effect when focused
+                                }}
+                            />
+                        ),
+                        headerShown: false,
+                    }}
+                />
+                <Tab.Screen
+                    name="Learn"
+                    component={LearnScreen}
+                    options={{
+                        tabBarIcon: ({ color, size, focused }) => (
+                            <Ionicons
+                                name="book-outline"
                                 size={focused ? 20 : 18}  // Enlarge the icon when focused
                                 color={color}
                                 style={{
