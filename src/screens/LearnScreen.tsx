@@ -4,6 +4,8 @@ import { View, Text, StyleSheet, TouchableOpacity, Image, Animated, Easing } fro
 import Ionicons from 'react-native-vector-icons/Ionicons'; // Import Ionicons
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'; // Import Ionicons
 import { ScrollView, TextInput, TouchableNativeFeedback } from 'react-native-gesture-handler';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'; // Import Ionicons
+
 
 interface LearnScreenProps {
     navigation: any;
@@ -39,6 +41,7 @@ class LearnScreen extends Component<LearnScreenProps, LearnScreenState> {
 
         this.interval = null;
         // this.onNextPress = this.onNextPress.bind(this);
+        this.onViewAllPress = this.onViewAllPress.bind(this);
     }
 
     componentDidMount() {
@@ -76,6 +79,10 @@ class LearnScreen extends Component<LearnScreenProps, LearnScreenState> {
         });
     };
 
+    onViewAllPress() {
+        this.props.navigation.navigate("IpoScreen");
+    }
+
     render() {
         const { fadeAnim, currentIndex } = this.state;
         return (
@@ -99,20 +106,24 @@ class LearnScreen extends Component<LearnScreenProps, LearnScreenState> {
                 <ScrollView showsVerticalScrollIndicator={false}>
 
                     <View style={{ width: "100%", paddingHorizontal: 10 }}>
-                        <View style={{ width: "100%", paddingHorizontal: 10, paddingVertical: 5, backgroundColor: "#666", borderRadius: 10, flexDirection: 'row' }}>
-                            <View style={{ width: "15%", aspectRatio: 1, padding: 10, backgroundColor: "#fff", borderRadius: 300 }}>
-                                <Image
-                                    source={require('../assets/images/puzzle.png')} // Path to your local image
-                                    style={{
-                                        width: "100%", // Set width of the image
-                                        height: "100%", // Set height of the image
-                                        borderRadius: 10
-                                    }}
-                                />
+                        <View style={{ width: "100%", paddingHorizontal: 10, paddingVertical: 5, backgroundColor: "#666", borderRadius: 10, flexDirection: 'column' }}>
+
+                            <View style={{ flexDirection: 'row' }}>
+                                <View style={{ width: "15%", aspectRatio: 1, padding: 10, backgroundColor: "#fff", borderRadius: 300 }}>
+                                    <Image
+                                        source={require('../assets/images/puzzle.png')} // Path to your local image
+                                        style={{
+                                            width: "100%", // Set width of the image
+                                            height: "100%", // Set height of the image
+                                            borderRadius: 10
+                                        }}
+                                    />
+                                </View>
+                                <View style={{ width: "80%", paddingLeft: 10, justifyContent: 'center', alignItems: 'center' }}>
+                                    <Animated.Text style={[{ color: "#fff", fontSize: 14 }, { opacity: fadeAnim }]}>{this.texts[currentIndex]}</Animated.Text>
+                                </View>
                             </View>
-                            <View style={{ width: "80%", paddingLeft: 10, justifyContent: 'center', alignItems: 'center' }}>
-                                <Animated.Text style={[{ color: "#fff", fontSize: 14 }, { opacity: fadeAnim }]}>{this.texts[currentIndex]}</Animated.Text>
-                            </View>
+                            <Text style={{ fontSize: 10, fontWeight: '600', color: "#fff" }}>Quick Facts!</Text>
                         </View>
                     </View>
 
@@ -329,15 +340,15 @@ class LearnScreen extends Component<LearnScreenProps, LearnScreenState> {
                     </ScrollView>
 
                     <View style={{ paddingHorizontal: 10, marginTop: 10, justifyContent: 'space-between' }}>
-                        <View style={{marginTop: 20, flexDirection: 'row', justifyContent: 'space-between' }}>
+                        <View style={{ marginTop: 20, flexDirection: 'row', justifyContent: 'space-between' }}>
                             <Text style={{ fontSize: 16, fontWeight: '600', color: "#36454F" }}>Market Insights</Text>
-                            <TouchableOpacity onPress={null}>
+                            <TouchableOpacity onPress={this.onViewAllPress}>
                                 <Text style={{ fontSize: 14, fontWeight: '450', color: "#225cc7" }}>View All</Text>
                             </TouchableOpacity>
                         </View>
                         <Text style={{ fontSize: 14, color: "#36454F" }}>Analysis of current IPO trends and market dynamics</Text>
                     </View>
-                   
+
                     <View style={{ width: "100%", padding: 10, }}>
                         <TouchableNativeFeedback>
                             <View style={{
@@ -421,6 +432,146 @@ class LearnScreen extends Component<LearnScreenProps, LearnScreenState> {
                             </View>
                         </TouchableNativeFeedback>
                     </View>
+                    <View style={{ paddingHorizontal: 10, marginTop: 10, justifyContent: 'space-between' }}>
+                        <View style={{ marginTop: 20, flexDirection: 'row', justifyContent: 'space-between' }}>
+                            <Text style={{ fontSize: 16, fontWeight: '600', color: "#36454F" }}>Exclusive Content</Text>
+                            <TouchableOpacity onPress={null}>
+                                <Text style={{ fontSize: 14, fontWeight: '450', color: "#225cc7" }}>Buy Now</Text>
+                            </TouchableOpacity>
+                        </View>
+                        <Text style={{ fontSize: 14, color: "#36454F" }}>Unlock the full potential with member only content</Text>
+                    </View>
+                    <ScrollView horizontal={true} style={{ width: "100%", marginTop: 10 }}>
+                        <View style={{ paddingLeft: 10, flexDirection: 'row', paddingVertical: 2 }}>
+                            <TouchableOpacity>
+                                <View style={{ width: 87, aspectRatio: 0.5625 }}>
+                                    <Image
+                                        source={require('../assets/images/phonepe.png')} // Path to your local image
+                                        style={{
+                                            width: "100%", // Set width of the image
+                                            height: "100%", // Set height of the image
+                                            borderRadius: 10
+                                        }}
+                                    />
+                                    <View style={{ width: "100%", height: "100%", backgroundColor: "#000", position: 'absolute', borderRadius: 10, opacity: 0.7, justifyContent: 'center', alignItems: 'center' }}>
+                                        <MaterialCommunityIcons
+                                            name="lock-outline"
+                                            size={22}  // Enlarge the icon when focused
+                                            color={"#fff"}
+                                            style={{}}
+                                        />
+                                    </View>
+                                </View>
+                            </TouchableOpacity>
+
+                            <View style={{ width: 87, aspectRatio: 0.5625, marginLeft: 10 }}>
+                                <Image
+                                    source={require('../assets/images/gaming.png')} // Path to your local image
+                                    style={{
+                                        width: "100%", // Set width of the image
+                                        height: "100%", // Set height of the image
+                                        borderRadius: 10
+                                    }}
+                                />
+                                <View style={{ width: "100%", height: "100%", backgroundColor: "#000", position: 'absolute', borderRadius: 10, opacity: 0.7, justifyContent: 'center', alignItems: 'center' }}>
+                                    <MaterialCommunityIcons
+                                        name="lock-outline"
+                                        size={22}  // Enlarge the icon when focused
+                                        color={"#fff"}
+                                        style={{}}
+                                    />
+                                </View>
+                            </View>
+
+                            <View style={{ width: 87, aspectRatio: 0.5625, marginLeft: 10 }}>
+                                <Image
+                                    source={require('../assets/images/aten.jpg')} // Path to your local image
+                                    style={{
+                                        width: "100%", // Set width of the image
+                                        height: "100%", // Set height of the image
+                                        borderRadius: 10
+                                    }}
+                                />
+                                <View style={{ width: "100%", height: "100%", backgroundColor: "#000", position: 'absolute', borderRadius: 10, opacity: 0.7, justifyContent: 'center', alignItems: 'center' }}>
+                                    <MaterialCommunityIcons
+                                        name="lock-outline"
+                                        size={22}  // Enlarge the icon when focused
+                                        color={"#fff"}
+                                        style={{}}
+                                    />
+                                </View>
+                            </View>
+
+                            <View style={{ width: 87, aspectRatio: 0.5625, marginLeft: 10 }}>
+                                <Image
+                                    source={require('../assets/images/revolution.png')} // Path to your local image
+                                    style={{
+                                        width: "100%", // Set width of the image
+                                        height: "100%", // Set height of the image
+                                        borderRadius: 10
+                                    }}
+                                />
+                                <View style={{ width: "100%", height: "100%", backgroundColor: "#000", position: 'absolute', borderRadius: 10, opacity: 0.7, justifyContent: 'center', alignItems: 'center' }}>
+                                    <MaterialCommunityIcons
+                                        name="lock-outline"
+                                        size={22}  // Enlarge the icon when focused
+                                        color={"#fff"}
+                                        style={{}}
+                                    />
+                                </View>
+                            </View>
+
+                            <View style={{ width: 87, aspectRatio: 0.5625, marginLeft: 10 }}>
+                                <Image
+                                    source={require('../assets/images/physics.png')} // Path to your local image
+                                    style={{
+                                        width: "100%", // Set width of the image
+                                        height: "100%", // Set height of the image
+                                        borderRadius: 10
+                                    }}
+                                />
+                                <View style={{ width: "100%", height: "100%", backgroundColor: "#000", position: 'absolute', borderRadius: 10, opacity: 0.7, justifyContent: 'center', alignItems: 'center' }}>
+                                    <MaterialCommunityIcons
+                                        name="lock-outline"
+                                        size={22}  // Enlarge the icon when focused
+                                        color={"#fff"}
+                                        style={{}}
+                                    />
+                                </View>
+                            </View>
+
+                            <View style={{
+                                width: 87, aspectRatio: 0.5625, marginLeft: 10, backgroundColor: "#fff", borderRadius: 10, shadowColor: '#000',
+                                shadowOpacity: 0.1,
+                                shadowRadius: 5,
+                                shadowOffset: { width: 0, height: 2 },
+                                elevation: 3,
+                                justifyContent: 'center',
+                                alignItems: 'center'
+                            }}>
+
+                                <View style={{
+                                    justifyContent: 'center',
+                                    alignItems: 'center'
+                                }}>
+                                    <Ionicons
+                                        name="arrow-forward-circle-outline"
+                                        size={22}  // Enlarge the icon when focused
+                                        color={"#225cc7"}
+                                        style={{}}
+                                    />
+                                    <Text style={{ color: "#225cc7", fontSize: 14 }}>More</Text>
+                                </View>
+
+                            </View>
+                            <View style={{ width: 15 }}>
+
+                            </View>
+
+
+
+                        </View>
+                    </ScrollView>
                     <View style={{ width: "100%", height: 50 }}></View>
                 </ScrollView>
             </View>

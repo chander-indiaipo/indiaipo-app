@@ -1,6 +1,6 @@
 // WelcomeScreen.tsx
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, Animated } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons'; // Import Ionicons
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'; // Import Ionicons
 import AntDesign from 'react-native-vector-icons/AntDesign'; // Import Ionicons
@@ -17,6 +17,7 @@ interface DashboardScreenState {
 
 class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenState> {
     // Initialize state with a default value
+    animatedOpacity: Animated.Value;
     constructor(props: DashboardScreenProps) {
         super(props);
         this.state = {
@@ -25,16 +26,46 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
         this.onReadMorePress = this.onReadMorePress.bind(this);
         this.onViewAllPress = this.onViewAllPress.bind(this);
         this.onNewsPress = this.onNewsPress.bind(this);
+        this.openMagazine = this.openMagazine.bind(this);
+        this.onMoreServicePress = this.onMoreServicePress.bind(this);
+
+        this.animatedOpacity = new Animated.Value(1); // Start fully visible
     }
 
     componentDidMount() {
+        this.startFlashing();
         // Any logic to run when the component is mounted
         // const res = await axios.get('https://fake-json-api.mock.beeceptor.com/users');
         // console.log(res.data);
     }
 
+    componentWillUnmount() {
+        this.animatedOpacity.stopAnimation();
+    }
+
+    startFlashing = () => {
+        Animated.loop(
+            Animated.sequence([
+                Animated.timing(this.animatedOpacity, {
+                    toValue: 0,
+                    duration: 1000,
+                    useNativeDriver: true,
+                }),
+                Animated.timing(this.animatedOpacity, {
+                    toValue: 1,
+                    duration: 1000,
+                    useNativeDriver: true,
+                }),
+            ])
+        ).start();
+    };
+
     onReadMorePress() {
         this.props.navigation.navigate("News");
+    }
+
+    openMagazine() {
+        this.props.navigation.navigate("MagazineScreen");
     }
 
     onViewAllPress() {
@@ -45,12 +76,25 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
         this.props.navigation.navigate("NewsDetailScreen");
     }
 
+    onMoreServicePress() {
+        this.props.navigation.navigate("Services");
+    }
+
     render() {
         return (
             <ScrollView showsVerticalScrollIndicator={false} style={{ flex: 1, backgroundColor: '#fff' }}>
-                <View style={{ paddingTop: 15, paddingBottom: 10, paddingLeft: 10, paddingRight: 10, flexDirection: 'row', justifyContent: "space-between", elevation: 10, backgroundColor: "#fff" }}>
-                    <View>
-                        <Text style={{ fontSize: 20, color: "#36454F", fontWeight: 'bold' }}>Hi, Chander!</Text>
+                <View style={{ paddingTop: 10, paddingBottom: 10, paddingLeft: 10, paddingRight: 10, flexDirection: 'row', justifyContent: "space-between", elevation: 10, backgroundColor: "#fff" }}>
+                    <View style={{ flexDirection: 'row' }}>
+                        <Image
+                            source={require('../assets/images/logo_black.png')} // Path to your local image
+                            style={{
+                                width: 30, // Set width of the image
+                                // height: "100%", // Set height of the image
+                                // borderRadius: 300
+                                aspectRatio: 1
+                            }}
+                        />
+                        <Text style={{ fontSize: 20, color: "#36454F", fontWeight: 'bold', marginLeft: 5 }}>Hi, Chander!</Text>
                     </View>
                     <View style={{ flexDirection: 'row' }}>
                         <View>
@@ -83,13 +127,15 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
                 <View style={{ width: "100%", marginTop: 2 }}>
                     <TouchableNativeFeedback style={{ width: "100%", justifyContent: 'center', alignItems: 'center' }}>
                         <View style={{ width: "100%", flexDirection: 'row', paddingVertical: 10, justifyContent: 'center', alignItems: 'center', backgroundColor: "#225cc7", borderBottomLeftRadius: 10, borderBottomRightRadius: 10 }}>
-                            <Text style={{ fontSize: 14, color: "#fff" }}>Check your IPO eligibility</Text>
-                            <AntDesign
-                                name="rightcircleo"
-                                size={14}  // Enlarge the icon when focused
-                                color={"#fff"}
-                                style={{ marginLeft: 10 }}
-                            />
+                            <Animated.Text style={[{ fontSize: 14, color: "#fff" }]}>Check your IPO eligibility</Animated.Text>
+                            <Animated.View style={{ opacity: this.animatedOpacity }}>
+                                <AntDesign
+                                    name="rightcircleo"
+                                    size={14}  // Enlarge the icon when focused
+                                    color={"#fff"}
+                                    style={{ marginLeft: 10 }}
+                                />
+                            </Animated.View>
                         </View>
                     </TouchableNativeFeedback>
                 </View>
@@ -138,6 +184,63 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
                         </View>
                     </View>
                 </View> */}
+                <View style={{ paddingHorizontal: 10, marginTop: 20 }}>
+                    <View style={{ width: "100%", backgroundColor: "#dbffdb", padding: 10, borderRadius: 10, elevation: 5 }}>
+                        <View style={{ flexDirection: 'row' }}>
+
+                            <View style={{ paddingLeft: 10, width: "80%" }}>
+                                <Text style={{ fontSize: 16, fontWeight: '600', color: "#04c204" }}>Get Mortgage and Interest Free Funding</Text>
+                                <View style={{ alignSelf: "flex-start", marginTop: 10 }}>
+                                    <TouchableNativeFeedback onPress={null} style={{ alignSelf: "flex-start" }}>
+                                        <Text style={{ fontSize: 12, fontWeight: '600', color: "#fff", backgroundColor: "#04c204", alignSelf: 'flex-end', paddingHorizontal: 15, paddingVertical: 5, borderRadius: 10 }}>Schedule a callback</Text>
+                                    </TouchableNativeFeedback>
+                                </View>
+                            </View>
+                            <View style={{ width: "20%", aspectRatio: 1, padding: 10, backgroundColor: "#fff", elevation: 5, borderRadius: 300, justifyContent:'center' }}>
+                                <Image
+                                    source={require('../assets/images/emergency.png')} // Path to your local image
+                                    style={{
+                                        width: "90%", // Set width of the image
+                                        height: "90%", // Set height of the image,
+                                        alignSelf:'center'
+                                    }}
+                                />
+                            </View>
+                        </View>
+                    </View>
+                </View>
+                {/* <View style={{ paddingHorizontal: 10, marginTop: 20 }}>
+                    <View style={{ width: "100%", backgroundColor: "#e9f0fb", padding: 10, borderRadius: 10 }}>
+
+                        <Text style={{ fontSize: 16, fontWeight: '600', color: "#225cc7" }}>Ready to Take Your Business to The Next Level ?</Text>
+                        <Text style={{ fontSize: 16, fontWeight: '600', color: "#225cc7" }}>Get Mortgage and Interest Free Funding</Text>
+                    </View>
+                </View> */}
+                <View style={{ paddingHorizontal: 10, marginTop: 20 }}>
+                    <View style={{ width: "100%", backgroundColor: "#225cc7", padding: 10, borderRadius: 10, elevation: 5 }}>
+                        <View style={{ flexDirection: 'row' }}>
+                            <View style={{ width: "20%", aspectRatio: 1, padding: 10, backgroundColor: "#fff", elevation: 5, borderRadius: 300, justifyContent:'center' }}>
+                                <Image
+                                    source={require('../assets/images/ebook.png')} // Path to your local image
+                                    style={{
+                                        width: "100%", // Set width of the image
+                                        height: "100%", // Set height of the image
+                                        alignSelf:'center'
+                                    }}
+                                />
+                            </View>
+                            <View style={{ paddingLeft: 10, width: "80%" }}>
+                                <Text style={{ fontSize: 16, fontWeight: '600', color: "#fff" }}>IPO World E-Magazine is out now!</Text>
+                                <View style={{ alignSelf: "flex-end", marginTop: 10 }}>
+                                    <TouchableNativeFeedback onPress={this.openMagazine} style={{ alignSelf: "flex-end" }}>
+                                        <Text style={{ fontSize: 12, fontWeight: '600', color: "#225cc7", backgroundColor: "#fff", alignSelf: 'flex-end', paddingHorizontal: 15, paddingVertical: 5, borderRadius: 10 }}>Read Now</Text>
+                                    </TouchableNativeFeedback>
+                                </View>
+                            </View>
+                        </View>
+                    </View>
+                </View>
+
 
                 <View style={{ paddingHorizontal: 10, marginTop: 20, flexDirection: 'row', justifyContent: 'space-between' }}>
                     <Text style={{ fontSize: 16, fontWeight: '600', color: "#36454F" }}>Our Services</Text>
@@ -147,7 +250,7 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
                     <View style={{ width: "100%", flexDirection: 'row', justifyContent: 'space-between' }}>
                         <View style={{ width: '47%', borderRadius: 10 }}>
                             <TouchableNativeFeedback
-                            // onPress={() => console.log('Pressed')}
+                                onPress={null}
                             // background={TouchableNativeFeedback.Ripple('#fff', false)}
                             >
                                 <View style={{
@@ -254,7 +357,7 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
 
                         <View style={{ width: '47%', borderRadius: 10 }}>
                             <TouchableNativeFeedback
-                            // onPress={() => console.log('Pressed')}
+                            onPress={this.onMoreServicePress}
                             // background={TouchableNativeFeedback.Ripple('#fff', false)}
                             >
                                 <View style={{
@@ -393,148 +496,15 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
 
                     </View>
                 </ScrollView>
-                <View style={{ paddingHorizontal: 10, marginTop: 20, flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <Text style={{ fontSize: 16, fontWeight: '600', color: "#36454F" }}>Exclusive Content</Text>
-                </View>
-                <ScrollView horizontal={true} style={{ width: "100%", marginTop: 10 }}>
-                    <View style={{ paddingLeft: 10, flexDirection: 'row', paddingVertical: 2 }}>
-                        <TouchableOpacity>
-                            <View style={{ width: 87, aspectRatio: 0.5625 }}>
-                                <Image
-                                    source={require('../assets/images/phonepe.png')} // Path to your local image
-                                    style={{
-                                        width: "100%", // Set width of the image
-                                        height: "100%", // Set height of the image
-                                        borderRadius: 10
-                                    }}
-                                />
-                                <View style={{ width: "100%", height: "100%", backgroundColor: "#000", position: 'absolute', borderRadius: 10, opacity: 0.7, justifyContent: 'center', alignItems: 'center' }}>
-                                    <MaterialCommunityIcons
-                                        name="lock-outline"
-                                        size={22}  // Enlarge the icon when focused
-                                        color={"#fff"}
-                                        style={{}}
-                                    />
-                                </View>
-                            </View>
-                        </TouchableOpacity>
-
-                        <View style={{ width: 87, aspectRatio: 0.5625, marginLeft: 10 }}>
-                            <Image
-                                source={require('../assets/images/gaming.png')} // Path to your local image
-                                style={{
-                                    width: "100%", // Set width of the image
-                                    height: "100%", // Set height of the image
-                                    borderRadius: 10
-                                }}
-                            />
-                            <View style={{ width: "100%", height: "100%", backgroundColor: "#000", position: 'absolute', borderRadius: 10, opacity: 0.7, justifyContent: 'center', alignItems: 'center' }}>
-                                <MaterialCommunityIcons
-                                    name="lock-outline"
-                                    size={22}  // Enlarge the icon when focused
-                                    color={"#fff"}
-                                    style={{}}
-                                />
-                            </View>
-                        </View>
-
-                        <View style={{ width: 87, aspectRatio: 0.5625, marginLeft: 10 }}>
-                            <Image
-                                source={require('../assets/images/aten.jpg')} // Path to your local image
-                                style={{
-                                    width: "100%", // Set width of the image
-                                    height: "100%", // Set height of the image
-                                    borderRadius: 10
-                                }}
-                            />
-                            <View style={{ width: "100%", height: "100%", backgroundColor: "#000", position: 'absolute', borderRadius: 10, opacity: 0.7, justifyContent: 'center', alignItems: 'center' }}>
-                                <MaterialCommunityIcons
-                                    name="lock-outline"
-                                    size={22}  // Enlarge the icon when focused
-                                    color={"#fff"}
-                                    style={{}}
-                                />
-                            </View>
-                        </View>
-
-                        <View style={{ width: 87, aspectRatio: 0.5625, marginLeft: 10 }}>
-                            <Image
-                                source={require('../assets/images/revolution.png')} // Path to your local image
-                                style={{
-                                    width: "100%", // Set width of the image
-                                    height: "100%", // Set height of the image
-                                    borderRadius: 10
-                                }}
-                            />
-                            <View style={{ width: "100%", height: "100%", backgroundColor: "#000", position: 'absolute', borderRadius: 10, opacity: 0.7, justifyContent: 'center', alignItems: 'center' }}>
-                                <MaterialCommunityIcons
-                                    name="lock-outline"
-                                    size={22}  // Enlarge the icon when focused
-                                    color={"#fff"}
-                                    style={{}}
-                                />
-                            </View>
-                        </View>
-
-                        <View style={{ width: 87, aspectRatio: 0.5625, marginLeft: 10 }}>
-                            <Image
-                                source={require('../assets/images/physics.png')} // Path to your local image
-                                style={{
-                                    width: "100%", // Set width of the image
-                                    height: "100%", // Set height of the image
-                                    borderRadius: 10
-                                }}
-                            />
-                            <View style={{ width: "100%", height: "100%", backgroundColor: "#000", position: 'absolute', borderRadius: 10, opacity: 0.7, justifyContent: 'center', alignItems: 'center' }}>
-                                <MaterialCommunityIcons
-                                    name="lock-outline"
-                                    size={22}  // Enlarge the icon when focused
-                                    color={"#fff"}
-                                    style={{}}
-                                />
-                            </View>
-                        </View>
-
-                        <View style={{
-                            width: 87, aspectRatio: 0.5625, marginLeft: 10, backgroundColor: "#fff", borderRadius: 10, shadowColor: '#000',
-                            shadowOpacity: 0.1,
-                            shadowRadius: 5,
-                            shadowOffset: { width: 0, height: 2 },
-                            elevation: 3,
-                            justifyContent: 'center',
-                            alignItems: 'center'
-                        }}>
-
-                            <View style={{
-                                justifyContent: 'center',
-                                alignItems: 'center'
-                            }}>
-                                <Ionicons
-                                    name="arrow-forward-circle-outline"
-                                    size={22}  // Enlarge the icon when focused
-                                    color={"#225cc7"}
-                                    style={{}}
-                                />
-                                <Text style={{ color: "#225cc7", fontSize: 14 }}>More</Text>
-                            </View>
-
-                        </View>
-                        <View style={{ width: 15 }}>
-
-                        </View>
-
-
-
-                    </View>
-                </ScrollView>
+                
                 <View style={{ paddingHorizontal: 10, marginTop: 20, flexDirection: 'row', justifyContent: 'space-between' }}>
                     <Text style={{ fontSize: 16, fontWeight: '600', color: "#36454F" }}>About Us</Text>
                 </View>
-                <View style={{ width: "100%", marginTop: 10,paddingHorizontal:10,borderRadius:10 }}>
+                <View style={{ width: "100%", marginTop: 10, paddingHorizontal: 10, borderRadius: 10 }}>
                     <YoutubePlayer
                         height={200}
                         play={false}
-                        style={{borderRadius:10}}
+                        style={{ borderRadius: 10 }}
                         videoId={'6gE4oTeJmxY'} // Extracted from the YouTube URL
                     />
                 </View>

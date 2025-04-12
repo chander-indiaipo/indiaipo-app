@@ -19,19 +19,31 @@ class IpoScreen extends Component<IpoScreenProps, IpoScreenState> {
         this.state = {
         };
 
-        // this.onNextPress = this.onNextPress.bind(this);
+        this.onGoBack = this.onGoBack.bind(this);
     }
 
     componentDidMount() {
         // Any logic to run when the component is mounted
     }
 
+    onGoBack() {
+        this.props.navigation.goBack();
+    }
+
     render() {
         return (
             <View style={{ flex: 1, backgroundColor: '#fff' }}>
                 <View style={{ paddingTop: 15, paddingLeft: 10, paddingRight: 10, flexDirection: 'row', justifyContent: "space-between" }}>
-                    <View>
-                        <Text style={{ fontSize: 20, color: "#36454F", fontWeight: 'bold' }}>IPOs</Text>
+                    <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+                        <TouchableOpacity onPress={this.onGoBack}>
+                            <MaterialIcons
+                                name="arrow-back"
+                                size={22}  // Enlarge the icon when focused
+                                color={"#36454F"}
+                                style={{}}
+                            />
+                        </TouchableOpacity>
+                        <Text style={{ fontSize: 20, color: "#36454F", fontWeight: 'bold', marginLeft: 10 }}>IPOs</Text>
                     </View>
                     <TouchableOpacity>
                         <MaterialIcons
@@ -44,7 +56,7 @@ class IpoScreen extends Component<IpoScreenProps, IpoScreenState> {
 
                 </View>
 
-                <View style={{ marginTop: 15, marginBottom: 10, flexDirection:'row' }}>
+                <View style={{ marginTop: 15, marginBottom: 10, flexDirection: 'row' }}>
                     <View style={{ paddingHorizontal: 15, paddingVertical: 5, marginLeft: 10, borderRadius: 10, backgroundColor: '#225cc7', justifyContent: 'center', alignItems: 'center', alignSelf: 'flex-start' }}>
                         <Text style={{ fontSize: 12, color: "#fff", fontWeight: 'bold' }}>Open</Text>
                     </View>
