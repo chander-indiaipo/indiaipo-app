@@ -12,15 +12,19 @@ interface DashboardScreenProps {
     navigation: any;
 }
 interface DashboardScreenState {
+    isPlaying: boolean;
 }
 
 
 class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenState> {
+    focusListener: any;
+    blurListener: any;
     // Initialize state with a default value
     animatedOpacity: Animated.Value;
     constructor(props: DashboardScreenProps) {
         super(props);
         this.state = {
+            isPlaying: false,
         };
 
         this.onReadMorePress = this.onReadMorePress.bind(this);
@@ -28,6 +32,9 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
         this.onNewsPress = this.onNewsPress.bind(this);
         this.openMagazine = this.openMagazine.bind(this);
         this.onMoreServicePress = this.onMoreServicePress.bind(this);
+        this.openVideo = this.openVideo.bind(this);
+        this.onNotificationPress = this.onNotificationPress.bind(this);
+        this.onLearnPress = this.onLearnPress.bind(this);
 
         this.animatedOpacity = new Animated.Value(1); // Start fully visible
     }
@@ -37,10 +44,21 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
         // Any logic to run when the component is mounted
         // const res = await axios.get('https://fake-json-api.mock.beeceptor.com/users');
         // console.log(res.data);
+        const { navigation } = this.props;
+
+        // this.focusListener = navigation.addListener('focus', () => {
+        //     this.setState({ isPlaying: true });
+        // });
+
+        // this.blurListener = navigation.addListener('blur', () => {
+        //     this.setState({ isPlaying: false });
+        // });
     }
 
     componentWillUnmount() {
         this.animatedOpacity.stopAnimation();
+        this.focusListener && this.focusListener();
+        this.blurListener && this.blurListener();
     }
 
     startFlashing = () => {
@@ -80,6 +98,18 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
         this.props.navigation.navigate("Services");
     }
 
+    onLearnPress() {
+        this.props.navigation.navigate("Learn");
+    }
+
+    openVideo() {
+        this.props.navigation.navigate("VideoScreen");
+    }
+
+    onNotificationPress() {
+        this.props.navigation.navigate("NotificationsScreen");
+    }
+
     render() {
         return (
             <ScrollView showsVerticalScrollIndicator={false} style={{ flex: 1, backgroundColor: '#fff' }}>
@@ -98,7 +128,7 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
                     </View>
                     <View style={{ flexDirection: 'row' }}>
                         <View>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={this.onNotificationPress}>
                                 <Ionicons
                                     name="notifications-outline"
                                     size={22}  // Enlarge the icon when focused
@@ -196,13 +226,13 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
                                     </TouchableNativeFeedback>
                                 </View>
                             </View>
-                            <View style={{ width: "20%", aspectRatio: 1, padding: 10, backgroundColor: "#fff", elevation: 5, borderRadius: 300, justifyContent:'center' }}>
+                            <View style={{ width: "20%", aspectRatio: 1, padding: 10, backgroundColor: "#fff", elevation: 5, borderRadius: 300, justifyContent: 'center' }}>
                                 <Image
                                     source={require('../assets/images/emergency.png')} // Path to your local image
                                     style={{
                                         width: "90%", // Set width of the image
                                         height: "90%", // Set height of the image,
-                                        alignSelf:'center'
+                                        alignSelf: 'center'
                                     }}
                                 />
                             </View>
@@ -219,13 +249,13 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
                 <View style={{ paddingHorizontal: 10, marginTop: 20 }}>
                     <View style={{ width: "100%", backgroundColor: "#225cc7", padding: 10, borderRadius: 10, elevation: 5 }}>
                         <View style={{ flexDirection: 'row' }}>
-                            <View style={{ width: "20%", aspectRatio: 1, padding: 10, backgroundColor: "#fff", elevation: 5, borderRadius: 300, justifyContent:'center' }}>
+                            <View style={{ width: "20%", aspectRatio: 1, padding: 10, backgroundColor: "#fff", elevation: 5, borderRadius: 300, justifyContent: 'center' }}>
                                 <Image
                                     source={require('../assets/images/ebook.png')} // Path to your local image
                                     style={{
                                         width: "100%", // Set width of the image
                                         height: "100%", // Set height of the image
-                                        alignSelf:'center'
+                                        alignSelf: 'center'
                                     }}
                                 />
                             </View>
@@ -343,7 +373,7 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
                                     <View style={{ width: "30%", height: "100%", justifyContent: 'center', alignItems: 'center', backgroundColor: "#fff", position: 'absolute', bottom: 0, right: 0, borderBottomRightRadius: 10, borderTopLeftRadius: 10 }}>
                                         <View style={{ width: "60%", aspectRatio: 1, }}>
                                             <Image
-                                                source={require('../assets/images/debt.png')} // Path to your local image
+                                                source={require('../assets/images/briefcase.png')} // Path to your local image
                                                 style={{
                                                     width: "100%", // Set width of the image
                                                     height: "100%", // Set height of the image
@@ -357,7 +387,7 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
 
                         <View style={{ width: '47%', borderRadius: 10 }}>
                             <TouchableNativeFeedback
-                            onPress={this.onMoreServicePress}
+                                onPress={this.onMoreServicePress}
                             // background={TouchableNativeFeedback.Ripple('#fff', false)}
                             >
                                 <View style={{
@@ -397,7 +427,7 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
                 </View>
                 <ScrollView horizontal={true} style={{ width: "100%", marginTop: 10 }}>
                     <View style={{ paddingLeft: 10, flexDirection: 'row', paddingVertical: 2 }}>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={this.openVideo}>
                             <View style={{ width: 87, aspectRatio: 0.5625 }}>
                                 <Image
                                     source={require('../assets/images/phonepe.png')} // Path to your local image
@@ -409,7 +439,7 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
                                 />
                             </View>
                         </TouchableOpacity>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={this.openVideo}>
                             <View style={{ width: 87, aspectRatio: 0.5625, marginLeft: 10 }}>
                                 <Image
                                     source={require('../assets/images/gaming.png')} // Path to your local image
@@ -421,7 +451,7 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
                                 />
                             </View>
                         </TouchableOpacity>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={this.openVideo}>
                             <View style={{ width: 87, aspectRatio: 0.5625, marginLeft: 10 }}>
                                 <Image
                                     source={require('../assets/images/aten.jpg')} // Path to your local image
@@ -433,7 +463,7 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
                                 />
                             </View>
                         </TouchableOpacity>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={this.openVideo}>
                             <View style={{ width: 87, aspectRatio: 0.5625, marginLeft: 10 }}>
                                 <Image
                                     source={require('../assets/images/revolution.png')} // Path to your local image
@@ -446,7 +476,7 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
                             </View>
 
                         </TouchableOpacity>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={this.openVideo}>
 
 
                             <View style={{ width: 87, aspectRatio: 0.5625, marginLeft: 10 }}>
@@ -460,7 +490,7 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
                                 />
                             </View>
                         </TouchableOpacity>
-                        <TouchableNativeFeedback>
+                        <TouchableNativeFeedback onPress={this.onLearnPress}>
 
                             <View style={{
                                 width: 87, aspectRatio: 0.5625, marginLeft: 10, backgroundColor: "#fff", borderRadius: 10, shadowColor: '#000',
@@ -496,15 +526,15 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
 
                     </View>
                 </ScrollView>
-                
+
                 <View style={{ paddingHorizontal: 10, marginTop: 20, flexDirection: 'row', justifyContent: 'space-between' }}>
                     <Text style={{ fontSize: 16, fontWeight: '600', color: "#36454F" }}>About Us</Text>
                 </View>
                 <View style={{ width: "100%", marginTop: 10, paddingHorizontal: 10, borderRadius: 10 }}>
                     <YoutubePlayer
                         height={200}
-                        play={false}
-                        style={{ borderRadius: 10 }}
+                        play={this.state.isPlaying}
+                        style={{}}
                         videoId={'6gE4oTeJmxY'} // Extracted from the YouTube URL
                     />
                 </View>
@@ -623,7 +653,7 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
                     <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
                 </TouchableNativeFeedback>
 
-                <View>
+                <TouchableNativeFeedback onPress={this.onNewsPress}>
                     <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                         <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                             <Image
@@ -644,9 +674,9 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
                         </View>
                     </View>
                     <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                </View>
+                </TouchableNativeFeedback>
 
-                <View>
+                <TouchableNativeFeedback onPress={this.onNewsPress}>
                     <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                         <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                             <Image
@@ -666,9 +696,9 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
                         </View>
                     </View>
                     <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                </View>
+                </TouchableNativeFeedback>
 
-                <View>
+                <TouchableNativeFeedback onPress={this.onNewsPress}>
                     <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                         <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                             <Image
@@ -689,9 +719,9 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
                         </View>
                     </View>
                     <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                </View>
+                </TouchableNativeFeedback>
 
-                <View>
+                <TouchableNativeFeedback onPress={this.onNewsPress}>
                     <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                         <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                             <Image
@@ -712,9 +742,9 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
                         </View>
                     </View>
                     <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                </View>
+                </TouchableNativeFeedback>
 
-                <View>
+                <TouchableNativeFeedback onPress={this.onNewsPress}>
                     <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                         <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                             <Image
@@ -734,7 +764,7 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
                         </View>
                     </View>
                     <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                </View>
+                </TouchableNativeFeedback>
 
                 <View style={{ width: "100%", justifyContent: 'center', alignItems: 'center', marginTop: 20 }}>
                     <TouchableNativeFeedback onPress={this.onReadMorePress}>

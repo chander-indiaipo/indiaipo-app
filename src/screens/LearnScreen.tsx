@@ -42,6 +42,7 @@ class LearnScreen extends Component<LearnScreenProps, LearnScreenState> {
         this.interval = null;
         // this.onNextPress = this.onNextPress.bind(this);
         this.onViewAllPress = this.onViewAllPress.bind(this);
+        this.openVideo = this.openVideo.bind(this);
     }
 
     componentDidMount() {
@@ -82,6 +83,11 @@ class LearnScreen extends Component<LearnScreenProps, LearnScreenState> {
     onViewAllPress() {
         this.props.navigation.navigate("IpoScreen");
     }
+
+    openVideo() {
+        this.props.navigation.navigate("VideoScreen");
+    }
+
 
     render() {
         const { fadeAnim, currentIndex } = this.state;
@@ -127,13 +133,19 @@ class LearnScreen extends Component<LearnScreenProps, LearnScreenState> {
                         </View>
                     </View>
 
+                    {/* <View style={{ width: "100%", paddingHorizontal: 10 }}>
+                        <View style={{ width: "47%" }}>
+                            <Text style={{ color: "#000" }}>IPO Basics</Text>
+                        </View>
+                    </View> */}
+
                     <View style={{ paddingHorizontal: 10, marginTop: 20, justifyContent: 'space-between' }}>
                         <Text style={{ fontSize: 16, fontWeight: '600', color: "#36454F" }}>IPO Basics</Text>
                         <Text style={{ fontSize: 14, color: "#36454F" }}>Fundamental concepts and terminology</Text>
                     </View>
                     <ScrollView horizontal={true} style={{ width: "100%", marginTop: 10 }}>
                         <View style={{ paddingLeft: 10, flexDirection: 'row', paddingVertical: 2 }}>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={this.openVideo}>
                                 <View style={{ width: 87, aspectRatio: 0.5625 }}>
                                     <Image
                                         source={require('../assets/images/phonepe.png')} // Path to your local image
@@ -145,7 +157,7 @@ class LearnScreen extends Component<LearnScreenProps, LearnScreenState> {
                                     />
                                 </View>
                             </TouchableOpacity>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={this.openVideo}>
                                 <View style={{ width: 87, aspectRatio: 0.5625, marginLeft: 10 }}>
                                     <Image
                                         source={require('../assets/images/gaming.png')} // Path to your local image
@@ -157,7 +169,7 @@ class LearnScreen extends Component<LearnScreenProps, LearnScreenState> {
                                     />
                                 </View>
                             </TouchableOpacity>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={this.openVideo}>
                                 <View style={{ width: 87, aspectRatio: 0.5625, marginLeft: 10 }}>
                                     <Image
                                         source={require('../assets/images/aten.jpg')} // Path to your local image
@@ -169,7 +181,7 @@ class LearnScreen extends Component<LearnScreenProps, LearnScreenState> {
                                     />
                                 </View>
                             </TouchableOpacity>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={this.openVideo}>
                                 <View style={{ width: 87, aspectRatio: 0.5625, marginLeft: 10 }}>
                                     <Image
                                         source={require('../assets/images/revolution.png')} // Path to your local image
@@ -182,7 +194,7 @@ class LearnScreen extends Component<LearnScreenProps, LearnScreenState> {
                                 </View>
 
                             </TouchableOpacity>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={this.openVideo}>
 
 
                                 <View style={{ width: 87, aspectRatio: 0.5625, marginLeft: 10 }}>
@@ -239,7 +251,7 @@ class LearnScreen extends Component<LearnScreenProps, LearnScreenState> {
                     </View>
                     <ScrollView horizontal={true} style={{ width: "100%", marginTop: 10 }}>
                         <View style={{ paddingLeft: 10, flexDirection: 'row', paddingVertical: 2 }}>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={this.openVideo}>
                                 <View style={{ width: 87, aspectRatio: 0.5625 }}>
                                     <Image
                                         source={require('../assets/images/gujrat.jpg')} // Path to your local image
@@ -251,7 +263,7 @@ class LearnScreen extends Component<LearnScreenProps, LearnScreenState> {
                                     />
                                 </View>
                             </TouchableOpacity>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={this.openVideo}>
                                 <View style={{ width: 87, aspectRatio: 0.5625, marginLeft: 10 }}>
                                     <Image
                                         source={require('../assets/images/indi.jpg')} // Path to your local image
@@ -263,7 +275,7 @@ class LearnScreen extends Component<LearnScreenProps, LearnScreenState> {
                                     />
                                 </View>
                             </TouchableOpacity>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={this.openVideo}>
                                 <View style={{ width: 87, aspectRatio: 0.5625, marginLeft: 10 }}>
                                     <Image
                                         source={require('../assets/images/jain.jpg')} // Path to your local image
@@ -275,7 +287,7 @@ class LearnScreen extends Component<LearnScreenProps, LearnScreenState> {
                                     />
                                 </View>
                             </TouchableOpacity>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={this.openVideo}>
                                 <View style={{ width: 87, aspectRatio: 0.5625, marginLeft: 10 }}>
                                     <Image
                                         source={require('../assets/images/infonative.jpg')} // Path to your local image
@@ -288,7 +300,7 @@ class LearnScreen extends Component<LearnScreenProps, LearnScreenState> {
                                 </View>
 
                             </TouchableOpacity>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={this.openVideo}>
 
 
                                 <View style={{ width: 87, aspectRatio: 0.5625, marginLeft: 10 }}>
@@ -439,7 +451,7 @@ class LearnScreen extends Component<LearnScreenProps, LearnScreenState> {
                                 <Text style={{ fontSize: 14, fontWeight: '450', color: "#225cc7" }}>Buy Now</Text>
                             </TouchableOpacity>
                         </View>
-                        <Text style={{ fontSize: 14, color: "#36454F" }}>Unlock the full potential with member only content</Text>
+                        <Text style={{ fontSize: 14, color: "#36454F" }}>Unlock the full potential with members only content</Text>
                     </View>
                     <ScrollView horizontal={true} style={{ width: "100%", marginTop: 10 }}>
                         <View style={{ paddingLeft: 10, flexDirection: 'row', paddingVertical: 2 }}>

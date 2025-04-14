@@ -19,11 +19,15 @@ class NewsScreen extends Component<NewsScreenProps, NewsScreenState> {
         this.state = {
         };
 
-        // this.onNextPress = this.onNextPress.bind(this);
+        this.onNewsPress = this.onNewsPress.bind(this);
     }
 
     componentDidMount() {
         // Any logic to run when the component is mounted
+    }
+
+    onNewsPress() {
+        this.props.navigation.navigate("NewsDetailScreen");
     }
 
     render() {
@@ -44,10 +48,10 @@ class NewsScreen extends Component<NewsScreenProps, NewsScreenState> {
                     </TouchableOpacity>
 
                 </View>
-                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{marginTop: 15, marginBottom: 10,}}>
-                    <View style={{  flexDirection: 'row' }}>
+                <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={{ marginTop: 15, marginBottom: 10, }}>
+                    <View style={{ flexDirection: 'row' }}>
                         <View style={{ paddingHorizontal: 15, paddingVertical: 5, marginLeft: 10, borderRadius: 10, backgroundColor: '#225cc7', justifyContent: 'center', alignItems: 'center', alignSelf: 'flex-start' }}>
-                            <Text style={{ fontSize: 12, color: "#fff", fontWeight: 'bold', marginBottom:-3 }}>Trending</Text>
+                            <Text style={{ fontSize: 12, color: "#fff", fontWeight: 'bold', marginBottom: -3 }}>Trending</Text>
                         </View>
                         <View style={{ paddingHorizontal: 15, paddingVertical: 5, marginLeft: 10, borderRadius: 10, backgroundColor: '#E5E4E2', justifyContent: 'center', alignItems: 'center', alignSelf: 'flex-start' }}>
                             <Text style={{ fontSize: 12, color: "#666", fontWeight: 'bold' }}>Business</Text>
@@ -64,7 +68,7 @@ class NewsScreen extends Component<NewsScreenProps, NewsScreenState> {
                     </View>
                 </ScrollView>
                 <ScrollView showsVerticalScrollIndicator={false}>
-                    <View>
+                    <TouchableNativeFeedback onPress={this.onNewsPress}>
                         <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                             <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                                 <Image
@@ -85,9 +89,9 @@ class NewsScreen extends Component<NewsScreenProps, NewsScreenState> {
                             </View>
                         </View>
                         <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                    </View>
+                    </TouchableNativeFeedback>
 
-                    <View>
+                    <TouchableNativeFeedback onPress={this.onNewsPress}>
                         <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                             <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                                 <Image
@@ -108,9 +112,9 @@ class NewsScreen extends Component<NewsScreenProps, NewsScreenState> {
                             </View>
                         </View>
                         <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                    </View>
+                    </TouchableNativeFeedback>
 
-                    <View>
+                    <TouchableNativeFeedback onPress={this.onNewsPress}>
                         <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                             <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                                 <Image
@@ -130,9 +134,9 @@ class NewsScreen extends Component<NewsScreenProps, NewsScreenState> {
                             </View>
                         </View>
                         <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                    </View>
+                    </TouchableNativeFeedback>
 
-                    <View>
+                    <TouchableNativeFeedback onPress={this.onNewsPress}>
                         <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                             <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                                 <Image
@@ -153,9 +157,9 @@ class NewsScreen extends Component<NewsScreenProps, NewsScreenState> {
                             </View>
                         </View>
                         <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                    </View>
+                    </TouchableNativeFeedback>
 
-                    <View>
+                    <TouchableNativeFeedback onPress={this.onNewsPress}>
                         <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                             <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                                 <Image
@@ -176,9 +180,9 @@ class NewsScreen extends Component<NewsScreenProps, NewsScreenState> {
                             </View>
                         </View>
                         <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                    </View>
+                    </TouchableNativeFeedback>
 
-                    <View>
+                    <TouchableNativeFeedback onPress={this.onNewsPress}>
                         <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                             <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                                 <Image
@@ -198,9 +202,9 @@ class NewsScreen extends Component<NewsScreenProps, NewsScreenState> {
                             </View>
                         </View>
                         <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                    </View>
+                    </TouchableNativeFeedback>
 
-                    <View>
+                    <TouchableNativeFeedback onPress={this.onNewsPress}>
                         <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                             <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                                 <Image
@@ -221,9 +225,9 @@ class NewsScreen extends Component<NewsScreenProps, NewsScreenState> {
                             </View>
                         </View>
                         <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                    </View>
+                    </TouchableNativeFeedback>
 
-                    <View>
+                    <TouchableNativeFeedback onPress={this.onNewsPress}>
                         <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                             <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                                 <Image
@@ -244,9 +248,9 @@ class NewsScreen extends Component<NewsScreenProps, NewsScreenState> {
                             </View>
                         </View>
                         <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                    </View>
+                    </TouchableNativeFeedback>
 
-                    <View>
+                    <TouchableNativeFeedback onPress={this.onNewsPress}>
                         <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                             <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                                 <Image
@@ -266,9 +270,9 @@ class NewsScreen extends Component<NewsScreenProps, NewsScreenState> {
                             </View>
                         </View>
                         <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                    </View>
+                    </TouchableNativeFeedback>
 
-                    <View>
+                    <TouchableNativeFeedback onPress={this.onNewsPress}>
                         <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                             <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                                 <Image
@@ -289,9 +293,9 @@ class NewsScreen extends Component<NewsScreenProps, NewsScreenState> {
                             </View>
                         </View>
                         <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                    </View>
+                    </TouchableNativeFeedback>
 
-                    <View>
+                    <TouchableNativeFeedback onPress={this.onNewsPress}>
                         <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                             <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                                 <Image
@@ -312,9 +316,9 @@ class NewsScreen extends Component<NewsScreenProps, NewsScreenState> {
                             </View>
                         </View>
                         <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                    </View>
+                    </TouchableNativeFeedback>
 
-                    <View>
+                    <TouchableNativeFeedback onPress={this.onNewsPress}>
                         <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                             <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                                 <Image
@@ -334,9 +338,9 @@ class NewsScreen extends Component<NewsScreenProps, NewsScreenState> {
                             </View>
                         </View>
                         <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                    </View>
+                    </TouchableNativeFeedback>
 
-                    <View>
+                    <TouchableNativeFeedback onPress={this.onNewsPress}>
                         <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                             <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                                 <Image
@@ -357,9 +361,9 @@ class NewsScreen extends Component<NewsScreenProps, NewsScreenState> {
                             </View>
                         </View>
                         <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                    </View>
+                    </TouchableNativeFeedback>
 
-                    <View>
+                    <TouchableNativeFeedback onPress={this.onNewsPress}>
                         <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                             <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                                 <Image
@@ -380,9 +384,9 @@ class NewsScreen extends Component<NewsScreenProps, NewsScreenState> {
                             </View>
                         </View>
                         <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                    </View>
+                    </TouchableNativeFeedback>
 
-                    <View>
+                    <TouchableNativeFeedback onPress={this.onNewsPress}>
                         <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                             <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                                 <Image
@@ -402,9 +406,9 @@ class NewsScreen extends Component<NewsScreenProps, NewsScreenState> {
                             </View>
                         </View>
                         <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                    </View>
+                    </TouchableNativeFeedback>
 
-                    <View>
+                    <TouchableNativeFeedback onPress={this.onNewsPress}>
                         <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                             <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                                 <Image
@@ -425,9 +429,9 @@ class NewsScreen extends Component<NewsScreenProps, NewsScreenState> {
                             </View>
                         </View>
                         <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                    </View>
+                    </TouchableNativeFeedback>
 
-                    <View>
+                    <TouchableNativeFeedback onPress={this.onNewsPress}>
                         <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                             <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                                 <Image
@@ -448,9 +452,9 @@ class NewsScreen extends Component<NewsScreenProps, NewsScreenState> {
                             </View>
                         </View>
                         <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                    </View>
+                    </TouchableNativeFeedback>
 
-                    <View>
+                    <TouchableNativeFeedback onPress={this.onNewsPress}>
                         <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                             <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                                 <Image
@@ -470,9 +474,9 @@ class NewsScreen extends Component<NewsScreenProps, NewsScreenState> {
                             </View>
                         </View>
                         <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                    </View>
+                    </TouchableNativeFeedback>
 
-                    <View>
+                    <TouchableNativeFeedback onPress={this.onNewsPress}>
                         <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                             <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                                 <Image
@@ -493,9 +497,9 @@ class NewsScreen extends Component<NewsScreenProps, NewsScreenState> {
                             </View>
                         </View>
                         <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                    </View>
+                    </TouchableNativeFeedback>
 
-                    <View>
+                    <TouchableNativeFeedback onPress={this.onNewsPress}>
                         <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                             <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                                 <Image
@@ -516,9 +520,9 @@ class NewsScreen extends Component<NewsScreenProps, NewsScreenState> {
                             </View>
                         </View>
                         <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                    </View>
+                    </TouchableNativeFeedback>
 
-                    <View>
+                    <TouchableNativeFeedback onPress={this.onNewsPress}>
                         <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                             <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                                 <Image
@@ -538,9 +542,9 @@ class NewsScreen extends Component<NewsScreenProps, NewsScreenState> {
                             </View>
                         </View>
                         <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                    </View>
+                    </TouchableNativeFeedback>
 
-                    <View>
+                    <TouchableNativeFeedback onPress={this.onNewsPress}>
                         <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                             <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                                 <Image
@@ -561,9 +565,9 @@ class NewsScreen extends Component<NewsScreenProps, NewsScreenState> {
                             </View>
                         </View>
                         <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                    </View>
+                    </TouchableNativeFeedback>
 
-                    <View>
+                    <TouchableNativeFeedback onPress={this.onNewsPress}>
                         <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                             <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                                 <Image
@@ -584,9 +588,9 @@ class NewsScreen extends Component<NewsScreenProps, NewsScreenState> {
                             </View>
                         </View>
                         <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                    </View>
+                    </TouchableNativeFeedback>
 
-                    <View>
+                    <TouchableNativeFeedback onPress={this.onNewsPress}>
                         <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                             <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                                 <Image
@@ -606,9 +610,9 @@ class NewsScreen extends Component<NewsScreenProps, NewsScreenState> {
                             </View>
                         </View>
                         <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                    </View>
+                    </TouchableNativeFeedback>
 
-                    <View>
+                    <TouchableNativeFeedback onPress={this.onNewsPress}>
                         <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                             <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                                 <Image
@@ -629,9 +633,9 @@ class NewsScreen extends Component<NewsScreenProps, NewsScreenState> {
                             </View>
                         </View>
                         <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                    </View>
+                    </TouchableNativeFeedback>
 
-                    <View>
+                    <TouchableNativeFeedback onPress={this.onNewsPress}>
                         <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                             <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                                 <Image
@@ -652,9 +656,9 @@ class NewsScreen extends Component<NewsScreenProps, NewsScreenState> {
                             </View>
                         </View>
                         <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                    </View>
+                    </TouchableNativeFeedback>
 
-                    <View>
+                    <TouchableNativeFeedback onPress={this.onNewsPress}>
                         <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                             <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                                 <Image
@@ -674,9 +678,9 @@ class NewsScreen extends Component<NewsScreenProps, NewsScreenState> {
                             </View>
                         </View>
                         <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                    </View>
+                    </TouchableNativeFeedback>
 
-                    <View>
+                    <TouchableNativeFeedback onPress={this.onNewsPress}>
                         <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                             <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                                 <Image
@@ -697,9 +701,9 @@ class NewsScreen extends Component<NewsScreenProps, NewsScreenState> {
                             </View>
                         </View>
                         <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                    </View>
+                    </TouchableNativeFeedback>
 
-                    <View>
+                    <TouchableNativeFeedback onPress={this.onNewsPress}>
                         <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                             <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                                 <Image
@@ -720,9 +724,9 @@ class NewsScreen extends Component<NewsScreenProps, NewsScreenState> {
                             </View>
                         </View>
                         <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                    </View>
+                    </TouchableNativeFeedback>
 
-                    <View>
+                    <TouchableNativeFeedback onPress={this.onNewsPress}>
                         <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                             <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                                 <Image
@@ -742,9 +746,9 @@ class NewsScreen extends Component<NewsScreenProps, NewsScreenState> {
                             </View>
                         </View>
                         <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                    </View>
+                    </TouchableNativeFeedback>
 
-                    <View>
+                    <TouchableNativeFeedback onPress={this.onNewsPress}>
                         <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                             <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                                 <Image
@@ -765,9 +769,9 @@ class NewsScreen extends Component<NewsScreenProps, NewsScreenState> {
                             </View>
                         </View>
                         <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                    </View>
+                    </TouchableNativeFeedback>
 
-                    <View>
+                    <TouchableNativeFeedback onPress={this.onNewsPress}>
                         <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                             <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                                 <Image
@@ -788,9 +792,9 @@ class NewsScreen extends Component<NewsScreenProps, NewsScreenState> {
                             </View>
                         </View>
                         <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                    </View>
+                    </TouchableNativeFeedback>
 
-                    <View>
+                    <TouchableNativeFeedback onPress={this.onNewsPress}>
                         <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                             <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                                 <Image
@@ -810,9 +814,9 @@ class NewsScreen extends Component<NewsScreenProps, NewsScreenState> {
                             </View>
                         </View>
                         <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                    </View>
+                    </TouchableNativeFeedback>
 
-                    <View>
+                    <TouchableNativeFeedback onPress={this.onNewsPress}>
                         <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                             <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                                 <Image
@@ -833,9 +837,9 @@ class NewsScreen extends Component<NewsScreenProps, NewsScreenState> {
                             </View>
                         </View>
                         <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                    </View>
+                    </TouchableNativeFeedback>
 
-                    <View>
+                    <TouchableNativeFeedback onPress={this.onNewsPress}>
                         <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                             <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                                 <Image
@@ -856,9 +860,9 @@ class NewsScreen extends Component<NewsScreenProps, NewsScreenState> {
                             </View>
                         </View>
                         <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                    </View>
+                    </TouchableNativeFeedback>
 
-                    <View>
+                    <TouchableNativeFeedback onPress={this.onNewsPress}>
                         <View style={{ width: "100%", flexDirection: 'row', paddingHorizontal: 10, paddingVertical: 10 }}>
                             <View style={{ width: "25%", padding: 5, borderWidth: 1, borderRadius: 10, borderColor: "#c3c3c3", aspectRatio: 1 }}>
                                 <Image
@@ -878,7 +882,7 @@ class NewsScreen extends Component<NewsScreenProps, NewsScreenState> {
                             </View>
                         </View>
                         <View style={{ width: "85%", alignSelf: 'center', backgroundColor: "#E5E4E2", height: 1 }}></View>
-                    </View>
+                    </TouchableNativeFeedback>
 
                     <View style={{ width: "100%", height: 50 }}></View>
                 </ScrollView>

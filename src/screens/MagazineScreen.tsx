@@ -12,7 +12,7 @@ interface MagazineScreenState { }
 
 class MagazineScreen extends Component<MagazineScreenProps, MagazineScreenState> {
     render() {
-        const pdfUrl = 'https://docs.google.com/gview?embedded=true&url=https://indiaipo.in/assets/india_ipo_comp_magzine.pdf'; // Replace with your PDF URL
+        const pdfUrl = 'https://docs.google.com/gview?embedded=true&url=https://indiaipo.in/assets/app_assets/india_ipo_comp_magzine.pdf'; // Replace with your PDF URL
 
         return (
             <SafeAreaView style={{

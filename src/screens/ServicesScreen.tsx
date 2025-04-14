@@ -106,11 +106,13 @@ class ServicesScreen extends Component<ServicesScreenProps, ServicesScreenState>
                                     <Text style={{ fontSize: 14, color: "#666", marginTop: 5, marginBottom: 25 }}>Guidance for small and medium enterprises</Text>
                                 </View>
                             </View>
-                            <TouchableNativeFeedback>
-                                <View style={{ paddingHorizontal: 15, paddingVertical: 5, backgroundColor: "#225cc7", borderRadius: 10, justifyContent: 'center', alignItems: 'center', alignSelf: 'flex-end' }}>
-                                    <Text style={{ fontSize: 14, color: "#fff" }}>Learn More</Text>
-                                </View>
-                            </TouchableNativeFeedback>
+                            <View style={{ alignSelf: 'flex-end' }}>
+                                <TouchableNativeFeedback style={{ alignSelf: 'flex-end' }}>
+                                    <View style={{ paddingHorizontal: 15, paddingVertical: 5, backgroundColor: "#225cc7", borderRadius: 10, justifyContent: 'center', alignItems: 'center', alignSelf: 'flex-end' }}>
+                                        <Text style={{ fontSize: 14, color: "#fff" }}>Learn More</Text>
+                                    </View>
+                                </TouchableNativeFeedback>
+                            </View>
                         </View>
                     </View>
 
