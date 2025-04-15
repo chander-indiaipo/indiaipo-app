@@ -20,6 +20,7 @@ class SettingsScreen extends Component<SettingsScreenProps, SettingsScreenState>
 
     // Manually bind the onGetStartedPress method to 'this'
     this.onNextPress = this.onNextPress.bind(this);
+    this.onProfilePress = this.onProfilePress.bind(this);
   }
 
   componentDidMount() {
@@ -30,6 +31,10 @@ class SettingsScreen extends Component<SettingsScreenProps, SettingsScreenState>
     this.props.navigation.navigate("OtpScreen");
   }
 
+  onProfilePress() {
+    this.props.navigation.navigate("ProfileScreen");
+}
+
   render() {
     return (
       <ScrollView style={{ flex: 1, backgroundColor: '#fff' }}>
@@ -39,7 +44,7 @@ class SettingsScreen extends Component<SettingsScreenProps, SettingsScreenState>
           </View>
 
         </View>
-        <TouchableNativeFeedback>
+        <TouchableNativeFeedback onPress={this.onProfilePress}>
           <View style={{ width: "100%", padding: 10, flexDirection: 'row', justifyContent: 'space-between' }}>
             <View style={{ flexDirection: 'row' }}>
               <View style={{ width: 60, aspectRatio: 1, borderRadius: 300, padding: 3, borderWidth: 1, borderColor: "#c3c3c3", }}>

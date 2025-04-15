@@ -1,18 +1,22 @@
 // WelcomeScreen.tsx
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, Animated } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, Animated, Dimensions, Alert } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons'; // Import Ionicons
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'; // Import Ionicons
 import AntDesign from 'react-native-vector-icons/AntDesign'; // Import Ionicons
 import { ScrollView, TextInput, TouchableNativeFeedback } from 'react-native-gesture-handler';
 import YoutubePlayer from 'react-native-youtube-iframe';
 import axios from 'axios';
+import Carousel from 'react-native-reanimated-carousel';
+
+const { width } = Dimensions.get('window');
 
 interface DashboardScreenProps {
     navigation: any;
 }
 interface DashboardScreenState {
     isPlaying: boolean;
+    images: string[];
 }
 
 
@@ -25,6 +29,11 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
         super(props);
         this.state = {
             isPlaying: false,
+            images: [
+                'https://www.indiaipo.in/assets/app_assets/banner2.png',
+                'https://www.indiaipo.in/assets/app_assets/banner3.png',
+                'https://www.indiaipo.in/assets/app_assets/banner4.png',
+            ],
         };
 
         this.onReadMorePress = this.onReadMorePress.bind(this);
@@ -35,6 +44,8 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
         this.openVideo = this.openVideo.bind(this);
         this.onNotificationPress = this.onNotificationPress.bind(this);
         this.onLearnPress = this.onLearnPress.bind(this);
+        this.onProfilePress = this.onProfilePress.bind(this);
+        this.onServiceDetailPress = this.onServiceDetailPress.bind(this);
 
         this.animatedOpacity = new Animated.Value(1); // Start fully visible
     }
@@ -110,11 +121,44 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
         this.props.navigation.navigate("NotificationsScreen");
     }
 
+    onProfilePress() {
+        this.props.navigation.navigate("ProfileScreen");
+    }
+
+    onServiceDetailPress() {
+        this.props.navigation.navigate("ServiceDetailScreen");
+    }
+
+    // Handle when user taps an image
+    handleImagePress = (index: number) => {
+        console.log("am here");
+        Alert.alert(`You tapped on slide ${index + 1}`);
+        // or navigate, open link, etc.
+    };
+    renderCarouselItem = (item: string, index: number) => {
+        return (
+            <TouchableOpacity key={index} onPress={() => this.handleImagePress(index)}>
+                <View style={{
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    width: width,
+                    height: 180,
+                }}>
+                    <Image source={{ uri: item }} style={{
+                        width: width - 20,
+                        height: 180,
+                        borderRadius: 10,
+                        resizeMode: 'contain',
+                    }} />
+                </View>
+            </TouchableOpacity>
+        );
+    };
     render() {
         return (
             <ScrollView showsVerticalScrollIndicator={false} style={{ flex: 1, backgroundColor: '#fff' }}>
                 <View style={{ paddingTop: 10, paddingBottom: 10, paddingLeft: 10, paddingRight: 10, flexDirection: 'row', justifyContent: "space-between", elevation: 10, backgroundColor: "#fff" }}>
-                    <View style={{ flexDirection: 'row' }}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                         <Image
                             source={require('../assets/images/logo_black.png')} // Path to your local image
                             style={{
@@ -126,7 +170,7 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
                         />
                         <Text style={{ fontSize: 20, color: "#36454F", fontWeight: 'bold', marginLeft: 5 }}>Hi, Chander!</Text>
                     </View>
-                    <View style={{ flexDirection: 'row' }}>
+                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                         <View>
                             <TouchableOpacity onPress={this.onNotificationPress}>
                                 <Ionicons
@@ -139,7 +183,7 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
                         </View>
 
                         <View style={{ marginLeft: 15 }}>
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={this.onProfilePress}>
                                 <View style={{ width: 25, aspectRatio: 1, borderRadius: 300 }}>
                                     <Image
                                         source={require('../assets/images/profile.png')} // Path to your local image
@@ -169,7 +213,17 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
                         </View>
                     </TouchableNativeFeedback>
                 </View>
-
+                <Carousel
+                    width={width}
+                    height={180}
+                    autoPlay={true}
+                    data={this.state.images}
+                    scrollAnimationDuration={1000}
+                    autoPlayInterval={3000}
+                    mode="parallax"
+                    modeConfig={{ parallaxScrollingScale: 0.9, parallaxScrollingOffset: 60 }}
+                    renderItem={({ item, index }) => this.renderCarouselItem(item, index)}
+                />
                 {/* <View style={{ width: "100%", paddingHorizontal: 10, marginTop: 20 }}>
                     <View style={{ width: "100%", padding: 10, }}>
                         <View style={{
@@ -214,12 +268,12 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
                         </View>
                     </View>
                 </View> */}
-                <View style={{ paddingHorizontal: 10, marginTop: 20 }}>
+                <View style={{ paddingHorizontal: 10, marginTop: 15 }}>
                     <View style={{ width: "100%", backgroundColor: "#dbffdb", padding: 10, borderRadius: 10, elevation: 5 }}>
                         <View style={{ flexDirection: 'row' }}>
 
                             <View style={{ paddingLeft: 10, width: "80%" }}>
-                                <Text style={{ fontSize: 16, fontWeight: '600', color: "#04c204" }}>Get Mortgage and Interest Free Funding</Text>
+                                <Text style={{ fontSize: 16, fontWeight: '600', color: "#36454F" }}>Get Mortgage and Interest Free Funding</Text>
                                 <View style={{ alignSelf: "flex-start", marginTop: 10 }}>
                                     <TouchableNativeFeedback onPress={null} style={{ alignSelf: "flex-start" }}>
                                         <Text style={{ fontSize: 12, fontWeight: '600', color: "#fff", backgroundColor: "#04c204", alignSelf: 'flex-end', paddingHorizontal: 15, paddingVertical: 5, borderRadius: 10 }}>Schedule a callback</Text>
@@ -280,7 +334,7 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
                     <View style={{ width: "100%", flexDirection: 'row', justifyContent: 'space-between' }}>
                         <View style={{ width: '47%', borderRadius: 10 }}>
                             <TouchableNativeFeedback
-                                onPress={null}
+                                onPress={this.onServiceDetailPress}
                             // background={TouchableNativeFeedback.Ripple('#fff', false)}
                             >
                                 <View style={{
@@ -295,7 +349,7 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
                                     width: '100%',
                                     flexDirection: 'row'
                                 }}>
-                                    <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#225cc7' }}>
+                                    <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#36454F' }}>
                                         Initial Public{"\n"}Offering
                                     </Text>
                                     <View style={{ width: "30%", height: "100%", backgroundColor: "#fff", position: 'absolute', justifyContent: 'center', alignItems: 'center', bottom: 0, right: 0, borderBottomRightRadius: 10, borderTopLeftRadius: 10 }}>
@@ -315,7 +369,7 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
 
                         <View style={{ width: '47%', borderRadius: 10 }}>
                             <TouchableNativeFeedback
-                            // onPress={() => console.log('Pressed')}
+                            onPress={this.onServiceDetailPress}
                             // background={TouchableNativeFeedback.Ripple('#fff', false)}
                             >
                                 <View style={{
@@ -330,7 +384,7 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
                                     width: '100%',
                                     flexDirection: 'row'
                                 }}>
-                                    <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#225cc7' }}>
+                                    <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#36454F' }}>
                                         Private{"\n"}Placement
                                     </Text>
                                     <View style={{ width: "30%", height: "100%", justifyContent: 'center', alignItems: 'center', backgroundColor: "#fff", position: 'absolute', bottom: 0, right: 0, borderBottomRightRadius: 10, borderTopLeftRadius: 10 }}>
@@ -352,7 +406,7 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
                     <View style={{ width: "100%", flexDirection: 'row', justifyContent: 'space-between', marginTop: 10 }}>
                         <View style={{ width: '47%', borderRadius: 10 }}>
                             <TouchableNativeFeedback
-                            // onPress={() => console.log('Pressed')}
+                            onPress={this.onServiceDetailPress}
                             // background={TouchableNativeFeedback.Ripple('#fff', false)}
                             >
                                 <View style={{
@@ -367,7 +421,7 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
                                     width: '100%',
                                     flexDirection: 'row'
                                 }}>
-                                    <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#225cc7' }}>
+                                    <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#36454F' }}>
                                         Corporate{"\n"}Finance
                                     </Text>
                                     <View style={{ width: "30%", height: "100%", justifyContent: 'center', alignItems: 'center', backgroundColor: "#fff", position: 'absolute', bottom: 0, right: 0, borderBottomRightRadius: 10, borderTopLeftRadius: 10 }}>
@@ -402,7 +456,7 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
                                     width: '100%',
                                     flexDirection: 'row'
                                 }}>
-                                    <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#225cc7' }}>
+                                    <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#36454F' }}>
                                         More{"\n"}Services
                                     </Text>
                                     <View style={{ width: "30%", height: "100%", justifyContent: 'center', alignItems: 'center', backgroundColor: "#fff", position: 'absolute', bottom: 0, right: 0, borderBottomRightRadius: 10, borderTopLeftRadius: 10 }}>

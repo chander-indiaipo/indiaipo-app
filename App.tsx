@@ -1,4 +1,5 @@
-// App.tsx
+import 'react-native-reanimated';
+import 'react-native-gesture-handler'; // If you're using gesture libraries too
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import AppNavigator from './src/navigation/AppNavigator'; 
