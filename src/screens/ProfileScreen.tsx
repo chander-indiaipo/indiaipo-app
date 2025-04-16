@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons'; // Import Ionicons
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'; // Import Ionicons
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'; // Import Ionicons
 import { ScrollView, TextInput, TouchableNativeFeedback } from 'react-native-gesture-handler';
 
 interface ProfileScreenProps {
@@ -75,38 +76,78 @@ class ProfileScreen extends Component<ProfileScreenProps, ProfileScreenState> {
                     </View>
 
                     <View style={{ paddingLeft: 10, justifyContent: 'flex-start', alignItems: 'center', marginTop: 30, flexDirection: 'row' }}>
-                        <View style={{ width: 50, height: 50, borderRadius: 300, backgroundColor: "#e9f0fb", justifyContent: 'center', alignSelf: 'center' }}>
+                        <View style={{ width: 40, height: 40, borderRadius: 300, backgroundColor: "#e9f0fb", justifyContent: 'center', alignSelf: 'center' }}>
                             <MaterialIcons
                                 name="phone"
                                 size={22}  // Enlarge the icon when focused
                                 color={"#36454F"}
-                                style={{}}
+                                style={{ alignSelf: 'center' }}
                             />
                         </View>
-                        <View style={{}}>
+                        <View style={{ paddingLeft: 10 }}>
                             <Text style={{ fontSize: 14, color: "#666" }}>Phone</Text>
                             <Text style={{ fontSize: 16, color: "#36454F", fontWeight: '500' }}>8572005698</Text>
                         </View>
                     </View>
 
-                    <View style={{ paddingLeft: 10, justifyContent: 'center', marginTop: 30 }}>
-                        <Text style={{ fontSize: 14, color: "#666" }}>Email</Text>
-                        <Text style={{ fontSize: 16, color: "#36454F", fontWeight: '500' }}>mchander20@gmail.com</Text>
+                    <View style={{ paddingLeft: 10, justifyContent: 'flex-start', alignItems: 'center', marginTop: 30, flexDirection: 'row' }}>
+                        <View style={{ width: 40, height: 40, borderRadius: 300, backgroundColor: "#e9f0fb", justifyContent: 'center', alignSelf: 'center' }}>
+                            <MaterialIcons
+                                name="email"
+                                size={22}  // Enlarge the icon when focused
+                                color={"#36454F"}
+                                style={{ alignSelf: 'center' }}
+                            />
+                        </View>
+                        <View style={{ paddingLeft: 10 }}>
+                            <Text style={{ fontSize: 14, color: "#666" }}>Email</Text>
+                            <Text style={{ fontSize: 16, color: "#36454F", fontWeight: '500' }}>mchander20@gmail.com</Text>
+                        </View>
                     </View>
 
-                    <View style={{ paddingLeft: 10, justifyContent: 'center', marginTop: 30 }}>
-                        <Text style={{ fontSize: 14, color: "#666" }}>Gender</Text>
-                        <Text style={{ fontSize: 16, color: "#36454F", fontWeight: '500' }}>Male</Text>
+                    <View style={{ paddingLeft: 10, justifyContent: 'flex-start', alignItems: 'center', marginTop: 30, flexDirection: 'row' }}>
+                        <View style={{ width: 40, height: 40, borderRadius: 300, backgroundColor: "#e9f0fb", justifyContent: 'center', alignSelf: 'center' }}>
+                            <MaterialCommunityIcons
+                                name="gender-male"
+                                size={22}  // Enlarge the icon when focused
+                                color={"#36454F"}
+                                style={{ alignSelf: 'center' }}
+                            />
+                        </View>
+                        <View style={{ paddingLeft: 10 }}>
+                            <Text style={{ fontSize: 14, color: "#666" }}>Gender</Text>
+                            <Text style={{ fontSize: 16, color: "#36454F", fontWeight: '500' }}>Male</Text>
+                        </View>
                     </View>
 
-                    <View style={{ paddingLeft: 10, justifyContent: 'center', marginTop: 30 }}>
-                        <Text style={{ fontSize: 14, color: "#666" }}>City</Text>
-                        <Text style={{ fontSize: 16, color: "#36454F", fontWeight: '500' }}>Yamuna Nagar</Text>
+                    <View style={{ paddingLeft: 10, justifyContent: 'flex-start', alignItems: 'center', marginTop: 30, flexDirection: 'row' }}>
+                        <View style={{ width: 40, height: 40, borderRadius: 300, backgroundColor: "#e9f0fb", justifyContent: 'center', alignSelf: 'center' }}>
+                            <MaterialCommunityIcons
+                                name="home-city"
+                                size={22}  // Enlarge the icon when focused
+                                color={"#36454F"}
+                                style={{ alignSelf: 'center' }}
+                            />
+                        </View>
+                        <View style={{ paddingLeft: 10 }}>
+                            <Text style={{ fontSize: 14, color: "#666" }}>City</Text>
+                            <Text style={{ fontSize: 16, color: "#36454F", fontWeight: '500' }}>Yamuna Nagar</Text>
+                        </View>
                     </View>
 
-                    <View style={{ paddingLeft: 10, justifyContent: 'center', marginTop: 30 }}>
-                        <Text style={{ fontSize: 14, color: "#666" }}>State</Text>
-                        <Text style={{ fontSize: 16, color: "#36454F", fontWeight: '500' }}>Haryana</Text>
+                    <View style={{ paddingLeft: 10, justifyContent: 'flex-start', alignItems: 'center', marginTop: 30, flexDirection: 'row' }}>
+                        <View style={{ width: 40, height: 40, borderRadius: 300, backgroundColor: "#e9f0fb", justifyContent: 'center', alignSelf: 'center' }}>
+                            <MaterialCommunityIcons
+                                name="city"
+                                size={22}  // Enlarge the icon when focused
+                                color={"#36454F"}
+                                style={{ alignSelf: 'center' }}
+                            />
+                        </View>
+                        <View style={{ paddingLeft: 10 }}>
+                            <Text style={{ fontSize: 14, color: "#666" }}>State</Text>
+                            <Text style={{ fontSize: 16, color: "#36454F", fontWeight: '500' }}>Haryana</Text>
+                        </View>
                     </View>
 
                     <View style={{ width: "100%", height: 50 }}></View>

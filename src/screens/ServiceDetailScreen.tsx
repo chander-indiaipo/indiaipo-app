@@ -65,8 +65,24 @@ class ServiceDetailScreen extends Component<ServiceDetailScreenProps, ServiceDet
                     </View>
 
                     <View style={{ width: "100%", paddingHorizontal: 10, marginTop: 15 }}>
-                        <View style={{ width: "100%", backgroundColor: "#e9f0fb", borderRadius: 10, padding: 10 }}>
-                            <Text style={{ fontSize: 20, color: "#36454F", fontWeight: 'bold', marginLeft: 10 }}>Watch Video</Text>
+                        <View style={{ width: "100%", backgroundColor: "#fff", borderRadius: 10, padding: 10, elevation: 5 }}>
+                            <Text style={{ fontSize: 14, color: "#36454F", fontWeight: 'bold', marginLeft: 10 }}>Explainer Video</Text>
+                            <View style={{}}>
+                                <View style={{ alignSelf: 'flex-end' }}>
+                                    <TouchableOpacity onPress={null}>
+                                        <View style={{ width: 70, aspectRatio: 0.5625 }}>
+                                            <Image
+                                                source={require('../assets/images/phonepe.png')} // Path to your local image
+                                                style={{
+                                                    width: "100%", // Set width of the image
+                                                    height: "100%", // Set height of the image
+                                                    borderRadius: 10
+                                                }}
+                                            />
+                                        </View>
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
                         </View>
                     </View>
 
