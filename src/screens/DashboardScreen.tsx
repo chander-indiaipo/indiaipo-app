@@ -137,13 +137,13 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
     };
     renderCarouselItem = (item: string, index: number) => {
         return (
-            <TouchableOpacity key={index} onPress={() => this.handleImagePress(index)}>
+            <TouchableOpacity key={index} onPress={() => this.handleImagePress(index)} activeOpacity={0.8}>
                 <View style={{
                     justifyContent: 'center',
                     alignItems: 'center',
                     width: width,
                     height: 180,
-                }}>
+                }}>  
                     <Image source={{ uri: item }} style={{
                         width: width - 20,
                         height: 180,
@@ -219,7 +219,7 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
                     autoPlay={true}
                     data={this.state.images}
                     scrollAnimationDuration={1000}
-                    autoPlayInterval={3000}
+                    autoPlayInterval={2000}
                     mode="parallax"
                     modeConfig={{ parallaxScrollingScale: 0.9, parallaxScrollingOffset: 60 }}
                     renderItem={({ item, index }) => this.renderCarouselItem(item, index)}
