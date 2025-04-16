@@ -33,21 +33,24 @@ class WelcomeScreen extends Component<WelcomeScreenProps, WelcomeScreenState> {
     render() {
         return (
             <View style={{ flex: 1, justifyContent: 'flex-end', alignItems: 'center', backgroundColor: '#fff' }}>
-                <Image
-                    source={require('../assets/images/ipo_png.png')} // Path to your local image
-                    style={{
-                        width: 350 , // Set width of the image
-                        height: 350, // Set height of the image
-                        marginBottom: 20, // Optional margin
-                    }}
-                />
+                <View style={{ paddingHorizontal: 20 }}>
+                    <Image
+                        source={require('../assets/images/second_vector.png')} // Path to your local image
+                        style={{
+                            width: 300, // Set width of the image
+                            height: 300, // Set height of the image
+                            resizeMode:'contain',
+                            marginBottom: 20, // Optional margin
+                        }}
+                    />
+                </View>
                 <Text style={{ fontSize: 24, fontWeight: 'bold', textAlign: 'center', color: '#36454F' }}>
-                    Get ready to be listed
+                    Unlock Knowledge, One{"\n"}Course at a Time
                 </Text>
 
                 <View style={{ marginTop: 15, paddingHorizontal: 40 }}>
                     <Text style={{ fontSize: 16, textAlign: 'center', color: '#A9A9A9' }}>
-                        Schedule a no-obligation consultation with our IPO experts to explore your company's entry into the IPO market and expansion options.
+                        Upgrade your IPO skills and stay ahead.
                     </Text>
                 </View>
 

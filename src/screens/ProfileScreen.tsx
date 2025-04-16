@@ -84,7 +84,7 @@ class ProfileScreen extends Component<ProfileScreenProps, ProfileScreenState> {
                                 style={{ alignSelf: 'center' }}
                             />
                         </View>
-                        <View style={{ paddingLeft: 10 }}>
+                        <View style={{ paddingLeft: 20 }}>
                             <Text style={{ fontSize: 14, color: "#666" }}>Phone</Text>
                             <Text style={{ fontSize: 16, color: "#36454F", fontWeight: '500' }}>8572005698</Text>
                         </View>
@@ -99,7 +99,7 @@ class ProfileScreen extends Component<ProfileScreenProps, ProfileScreenState> {
                                 style={{ alignSelf: 'center' }}
                             />
                         </View>
-                        <View style={{ paddingLeft: 10 }}>
+                        <View style={{ paddingLeft: 20 }}>
                             <Text style={{ fontSize: 14, color: "#666" }}>Email</Text>
                             <Text style={{ fontSize: 16, color: "#36454F", fontWeight: '500' }}>mchander20@gmail.com</Text>
                         </View>
@@ -114,7 +114,7 @@ class ProfileScreen extends Component<ProfileScreenProps, ProfileScreenState> {
                                 style={{ alignSelf: 'center' }}
                             />
                         </View>
-                        <View style={{ paddingLeft: 10 }}>
+                        <View style={{ paddingLeft: 20 }}>
                             <Text style={{ fontSize: 14, color: "#666" }}>Gender</Text>
                             <Text style={{ fontSize: 16, color: "#36454F", fontWeight: '500' }}>Male</Text>
                         </View>
@@ -129,7 +129,7 @@ class ProfileScreen extends Component<ProfileScreenProps, ProfileScreenState> {
                                 style={{ alignSelf: 'center' }}
                             />
                         </View>
-                        <View style={{ paddingLeft: 10 }}>
+                        <View style={{ paddingLeft: 20 }}>
                             <Text style={{ fontSize: 14, color: "#666" }}>City</Text>
                             <Text style={{ fontSize: 16, color: "#36454F", fontWeight: '500' }}>Yamuna Nagar</Text>
                         </View>
@@ -144,7 +144,7 @@ class ProfileScreen extends Component<ProfileScreenProps, ProfileScreenState> {
                                 style={{ alignSelf: 'center' }}
                             />
                         </View>
-                        <View style={{ paddingLeft: 10 }}>
+                        <View style={{ paddingLeft: 20 }}>
                             <Text style={{ fontSize: 14, color: "#666" }}>State</Text>
                             <Text style={{ fontSize: 16, color: "#36454F", fontWeight: '500' }}>Haryana</Text>
                         </View>
