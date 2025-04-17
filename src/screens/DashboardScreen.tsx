@@ -46,6 +46,7 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
         this.onLearnPress = this.onLearnPress.bind(this);
         this.onProfilePress = this.onProfilePress.bind(this);
         this.onServiceDetailPress = this.onServiceDetailPress.bind(this);
+        this.onCheckIpoEligibilityPress = this.onCheckIpoEligibilityPress.bind(this);
 
         this.animatedOpacity = new Animated.Value(1); // Start fully visible
     }
@@ -129,6 +130,10 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
         this.props.navigation.navigate("ServiceDetailScreen");
     }
 
+    onCheckIpoEligibilityPress() {
+        this.props.navigation.navigate("IpoEligibilityScreen");
+    }
+
     // Handle when user taps an image
     handleImagePress = (index: number) => {
         console.log("am here");
@@ -199,7 +204,7 @@ class DashboardScreen extends Component<DashboardScreenProps, DashboardScreenSta
                     </View>
                 </View>
                 <View style={{ width: "100%", marginTop: 2 }}>
-                    <TouchableNativeFeedback style={{ width: "100%", justifyContent: 'center', alignItems: 'center' }}>
+                    <TouchableNativeFeedback onPress={this.onCheckIpoEligibilityPress} style={{ width: "100%", justifyContent: 'center', alignItems: 'center' }}>
                         <View style={{ width: "100%", flexDirection: 'row', paddingVertical: 10, justifyContent: 'center', alignItems: 'center', backgroundColor: "#225cc7", borderBottomLeftRadius: 10, borderBottomRightRadius: 10 }}>
                             <Animated.Text style={[{ fontSize: 14, color: "#fff" }]}>Check your IPO eligibility</Animated.Text>
                             <Animated.View style={{ opacity: this.animatedOpacity }}>

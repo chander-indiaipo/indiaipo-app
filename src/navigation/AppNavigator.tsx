@@ -13,6 +13,7 @@ import VideoScreen from '../screens/VideoScreen';
 import NotificationsScreen from '../screens/NotificationsScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import ServiceDetailScreen from '../screens/ServiceDetailScreen';
+import IpoEligibilityScreen from '../screens/IpoEligibilityScreen';
 
 // Define the type for route parameters
 export type RootStackParamList = {
@@ -28,6 +29,7 @@ export type RootStackParamList = {
   NotificationsScreen: undefined; 
   ProfileScreen: undefined; 
   ServiceDetailScreen: undefined; 
+  IpoEligibilityScreen: undefined; 
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -97,6 +99,11 @@ const AppNavigator = () => {
       <Stack.Screen
         name="ServiceDetailScreen"
         component={ServiceDetailScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="IpoEligibilityScreen"
+        component={IpoEligibilityScreen}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
