@@ -1,5 +1,4 @@
-// SubscriptionModal.tsx
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import {
     View,
     Text,
@@ -8,6 +7,7 @@ import {
     TouchableOpacity,
     StyleSheet,
     GestureResponderEvent,
+    Animated,
 } from 'react-native';
 import Octicons from 'react-native-vector-icons/Octicons';
 
@@ -19,6 +19,31 @@ interface SubscriptionModalProps {
 }
 
 const SubscriptionModal: React.FC<SubscriptionModalProps> = ({ visible, onClose, title = 'Title', message = 'Message' }) => {
+    const scaleValue = useRef(new Animated.Value(1)).current;
+
+    useEffect(() => {
+        if (visible) {
+            animateCrown();
+        }
+    }, [visible]);
+
+    const animateCrown = () => {
+        Animated.loop(
+            Animated.sequence([
+                Animated.timing(scaleValue, {
+                    toValue: 1.2, // Zoom in
+                    duration: 500,
+                    useNativeDriver: true,
+                }),
+                Animated.timing(scaleValue, {
+                    toValue: 1, // Zoom out
+                    duration: 500,
+                    useNativeDriver: true,
+                }),
+            ])
+        ).start();
+    };
+
     return (
         <Modal
             animationType="slide"
@@ -30,28 +55,22 @@ const SubscriptionModal: React.FC<SubscriptionModalProps> = ({ visible, onClose,
                 <View style={styles.modalContent}>
                     <View style={{ flexDirection: 'row', justifyContent: 'center', alignItem: 'center' }}>
                         <Text style={styles.title}>Get Premium</Text>
-                        <Image
+                        <Animated.Image
                             source={require('../assets/images/crown.png')} // Path to your local image
-                            style={{
-                                width: 20, // Set width of the image
-                                height: 20, // Set height of the image
-                                resizeMode: 'contain',
-                                alignSelf: 'center'
-                            }}
+                            style={[
+                                {
+                                    width: 20, // Set width of the image
+                                    height: 20, // Set height of the image
+                                    resizeMode: 'contain',
+                                    alignSelf: 'center',
+                                    marginLeft: 5,
+                                },
+                                { transform: [{ scale: scaleValue }] }, // Apply animated scale
+                            ]}
                         />
                     </View>
                     <Text style={styles.message}>Unlock all the power of this mobile tool and enjoy digital experience like never before!</Text>
 
-
-                    {/* <Image
-                        source={require('../assets/images/premium.png')} // Path to your local image
-                        style={{
-                            width: 170, // Set width of the image
-                            height: 170, // Set height of the image
-                            resizeMode: 'contain',
-                            marginBottom: 20, // Optional margin
-                        }}
-                    /> */}
                     <View style={{ width: '100%', paddingHorizontal: 10 }}>
                         <View style={{ width: "100%", backgroundColor: "#225cc7", elevation: 5, paddingHorizontal: 10, paddingVertical: 10, borderRadius: 10, borderWidth: 1, borderColor: "#225cc7" }}>
                             <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
@@ -106,14 +125,15 @@ const SubscriptionModal: React.FC<SubscriptionModalProps> = ({ visible, onClose,
                             <Text style={{ color: "#666" }}>-30 Message credits</Text>
                         </View>
                     </View>
-                    <TouchableOpacity onPress={null} style={{ width: '100%',elevation: 5, borderRadius: 10, justifyContent: 'center', alignItems: 'center', marginTop: 20 }}>
+                    
+                    <TouchableOpacity onPress={null} style={{ width: '100%', elevation: 5, borderRadius: 10, justifyContent: 'center', alignItems: 'center', marginTop: 20 }}>
                         <View style={{ width: '100%', paddingVertical: 10, backgroundColor: '#225cc7', borderRadius: 10, justifyContent: 'center', alignItems: 'center' }}>
                             <Text style={{ fontSize: 16, color: '#fff' }}>Buy Now</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
             </View>
-        </Modal >
+        </Modal>
     );
 };
 
@@ -126,7 +146,7 @@ const styles = StyleSheet.create({
     },
     modalContent: {
         width: '100%',
-        height: "70%",
+        height: "65%",
         backgroundColor: '#fff',
         padding: 20,
         alignItems: 'center',
@@ -137,7 +157,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 20,
         alignSelf: 'center',
-        color: "#225cc7"
+        color: "#225cc7",
     },
     message: {
         textAlign: 'center',
