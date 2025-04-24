@@ -21,6 +21,7 @@ class ProfileScreen extends Component<ProfileScreenProps, ProfileScreenState> {
         };
 
         this.onGoBack = this.onGoBack.bind(this);
+        this.onEditProfileClick = this.onEditProfileClick.bind(this);
     }
 
     componentDidMount() {
@@ -29,6 +30,10 @@ class ProfileScreen extends Component<ProfileScreenProps, ProfileScreenState> {
 
     onGoBack() {
         this.props.navigation.goBack();
+    }
+
+    onEditProfileClick() {
+        this.props.navigation.navigate("KycScreen");
     }
 
     render() {
@@ -46,7 +51,7 @@ class ProfileScreen extends Component<ProfileScreenProps, ProfileScreenState> {
                         </TouchableOpacity>
                         <Text style={{ fontSize: 20, color: "#36454F", fontWeight: 'bold', marginLeft: 10 }}>Profile</Text>
                     </View>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={this.onEditProfileClick}>
                         <MaterialIcons
                             name="edit"
                             size={25}
@@ -76,6 +81,10 @@ class ProfileScreen extends Component<ProfileScreenProps, ProfileScreenState> {
                     </View>
 
                     <View style={{ paddingLeft: 10, justifyContent: 'flex-start', alignItems: 'center', marginTop: 30, flexDirection: 'row' }}>
+                        <Text style={{ fontSize: 16, color: "#36454F", fontWeight: '500' }}>Business Information</Text>
+                    </View>
+
+                    <View style={{ paddingLeft: 10, justifyContent: 'flex-start', alignItems: 'center', marginTop: 20, flexDirection: 'row' }}>
                         <View style={{ width: 40, height: 40, borderRadius: 300, backgroundColor: "#e9f0fb", justifyContent: 'center', alignSelf: 'center' }}>
                             <MaterialIcons
                                 name="phone"
@@ -148,6 +157,10 @@ class ProfileScreen extends Component<ProfileScreenProps, ProfileScreenState> {
                             <Text style={{ fontSize: 14, color: "#666" }}>State</Text>
                             <Text style={{ fontSize: 16, color: "#36454F", fontWeight: '500' }}>Haryana</Text>
                         </View>
+                    </View>
+
+                    <View style={{ paddingLeft: 10, justifyContent: 'flex-start', alignItems: 'center', marginTop: 30, flexDirection: 'row' }}>
+                        <Text style={{ fontSize: 16, color: "#36454F", fontWeight: '500' }}>Business Information</Text>
                     </View>
 
                     <View style={{ width: "100%", height: 50 }}></View>

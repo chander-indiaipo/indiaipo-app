@@ -16,6 +16,7 @@ import ServiceDetailScreen from '../screens/ServiceDetailScreen';
 import IpoEligibilityScreen from '../screens/IpoEligibilityScreen';
 import ChatbotScreen from '../screens/ChatbotScreen';
 import FaqScreen from '../screens/FaqScreen';
+import KycScreen from '../screens/KycScreen';
 
 // Define the type for route parameters
 export type RootStackParamList = {
@@ -34,6 +35,7 @@ export type RootStackParamList = {
   IpoEligibilityScreen: undefined; 
   ChatbotScreen: undefined; 
   FaqScreen: undefined; 
+  KycScreen: undefined; 
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -118,6 +120,11 @@ const AppNavigator = () => {
       <Stack.Screen
         name="FaqScreen"
         component={FaqScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="KycScreen"
+        component={KycScreen}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
