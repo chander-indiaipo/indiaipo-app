@@ -31,7 +31,7 @@ const SubscriptionModal: React.FC<SubscriptionModalProps> = ({ visible, onClose,
         Animated.loop(
             Animated.sequence([
                 Animated.timing(scaleValue, {
-                    toValue: 1.2, // Zoom in
+                    toValue: 1.3, // Zoom in
                     duration: 500,
                     useNativeDriver: true,
                 }),

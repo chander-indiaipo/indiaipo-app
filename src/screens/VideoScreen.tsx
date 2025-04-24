@@ -201,6 +201,7 @@ export default class ReelsScreen extends Component<IpoScreenProps, State> {
           pagingEnabled
           snapToInterval={height}
           decelerationRate="fast"
+          disableIntervalMomentum={ true }
           showsVerticalScrollIndicator={false}
           onViewableItemsChanged={this.onViewableItemsChanged}
           viewabilityConfig={this.viewabilityConfig}

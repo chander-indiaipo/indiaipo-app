@@ -1,6 +1,6 @@
 // WelcomeScreen.tsx
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, Share } from 'react-native';
 import { ScrollView, TextInput, TouchableNativeFeedback } from 'react-native-gesture-handler';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
@@ -21,6 +21,7 @@ class SettingsScreen extends Component<SettingsScreenProps, SettingsScreenState>
     // Manually bind the onGetStartedPress method to 'this'
     this.onNextPress = this.onNextPress.bind(this);
     this.onProfilePress = this.onProfilePress.bind(this);
+    this.onFaqPress = this.onFaqPress.bind(this);
   }
 
   componentDidMount() {
@@ -33,7 +34,31 @@ class SettingsScreen extends Component<SettingsScreenProps, SettingsScreenState>
 
   onProfilePress() {
     this.props.navigation.navigate("ProfileScreen");
-}
+  }
+
+  onFaqPress() {
+    this.props.navigation.navigate("FaqScreen");
+  }
+
+  onShare = async () => {
+    try {
+      const result = await Share.share({
+        message: 'Hey! Checkout this IndiaIPO app. Go public with your company. https://yourapp.com',
+      });
+
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          // shared with activity type of result.activityType
+        } else {
+          // shared
+        }
+      } else if (result.action === Share.dismissedAction) {
+        // dismissed
+      }
+    } catch (error: any) {
+      console.error('Sharing error:', error.message);
+    }
+  };
 
   render() {
     return (
@@ -82,7 +107,12 @@ class SettingsScreen extends Component<SettingsScreenProps, SettingsScreenState>
             <Text style={{ fontSize: 14, fontWeight: '450', color: "#36454F" }}>About India IPO</Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={this.onFaqPress}>
+          <View style={{ paddingHorizontal: 10, marginTop: 20, flexDirection: 'row', justifyContent: 'space-between' }}>
+            <Text style={{ fontSize: 14, fontWeight: '450', color: "#36454F" }}>FAQs</Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={this.onShare}>
           <View style={{ paddingHorizontal: 10, marginTop: 20, flexDirection: 'row', justifyContent: 'space-between' }}>
             <Text style={{ fontSize: 14, fontWeight: '450', color: "#36454F" }}>Share</Text>
           </View>

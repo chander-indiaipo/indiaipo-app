@@ -6,7 +6,6 @@ import {
     TouchableOpacity,
     TextInput,
     ScrollView,
-    Button,
     Pressable
 } from 'react-native';
 import { TouchableNativeFeedback } from 'react-native-gesture-handler';
@@ -33,7 +32,7 @@ interface IpoEligibilityScreenState {
 const companyTypes = [
     'Private Limited',
     'Public Limited',
-    'Sole Proprietorship',
+    'Limited Liability Partnership',
     'Firm',
 ];
 
@@ -64,6 +63,14 @@ class IpoEligibilityScreen extends Component<IpoEligibilityScreenProps, IpoEligi
         // Submit logic here
     };
 
+    getFinancialYearLabel = (offset = 0) => {
+        const now = new Date();
+        const year = now.getMonth() >= 3 ? now.getFullYear() : now.getFullYear() - 1;
+        const startYear = year - offset;
+        const endYear = startYear + 1;
+        return `${startYear}-${endYear}`;
+    };
+
     render() {
         const {
             companyName,
@@ -91,7 +98,7 @@ class IpoEligibilityScreen extends Component<IpoEligibilityScreenProps, IpoEligi
 
                 {/* Form */}
                 <ScrollView contentContainerStyle={styles.container}>
-                    <Text style={styles.label}>Company Name *</Text>
+                    <Text style={styles.label}>Your Business Name *</Text>
                     <TextInput
                         style={styles.input}
                         value={companyName}
@@ -125,6 +132,9 @@ class IpoEligibilityScreen extends Component<IpoEligibilityScreenProps, IpoEligi
                         placeholder="Enter contact number"
                         keyboardType="phone-pad"
                     />
+                    <View style={{ paddingHorizontal: 10, marginTop: 5 }}>
+                        <Text style={{ fontSize: 14, color: "#A9A9A9" }}>Securing your personal information is our priority</Text>
+                    </View>
 
                     <View style={{ marginTop: 20 }}>
                         <Text style={{ fontWeight: '600', marginBottom: 8, color: "#225cc7" }}>Do You Have GST? *</Text>
@@ -176,15 +186,13 @@ class IpoEligibilityScreen extends Component<IpoEligibilityScreenProps, IpoEligi
                         </View>
                     </View>
 
-
-                    {[
-                        { label: 'Current Year Turnover', key: 'currentYearTurnover' },
-                        { label: 'Current Year PAT', key: 'currentYearPAT' },
-                        { label: 'Last Year Turnover', key: 'lastYearTurnover' },
-                        { label: 'Last Year PAT', key: 'lastYearPAT' },
-                        { label: 'Last To Last Year Turnover', key: 'lastToLastYearTurnover' },
-                        { label: 'Last To Last Year PAT', key: 'lastToLastYearPAT' },
-                    ].map((field) => (
+                    {[{
+                        label: `${this.getFinancialYearLabel()} Turnover`,
+                        key: 'lastYearTurnover'
+                    }, {
+                        label: `${this.getFinancialYearLabel()} PAT`,
+                        key: 'lastYearPAT'
+                    }].map(field => (
                         <View key={field.key}>
                             <Text style={styles.label}>{field.label} *</Text>
                             <TextInput
@@ -204,8 +212,8 @@ class IpoEligibilityScreen extends Component<IpoEligibilityScreenProps, IpoEligi
                             </View>
                         </TouchableNativeFeedback>
                     </View>
-                </ScrollView >
-            </View >
+                </ScrollView>
+            </View>
         );
     }
 }
@@ -253,27 +261,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#f1f1f1',
         borderBottomColor: '#ccc',
         borderBottomWidth: 1,
-    },
-    switchContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        marginTop: 15,
-    },
-    switch: {
-        paddingVertical: 6,
-        paddingHorizontal: 20,
-        borderRadius: 20,
-    },
-    switchOn: {
-        backgroundColor: '#4CAF50',
-    },
-    switchOff: {
-        backgroundColor: '#ccc',
-    },
-    switchText: {
-        color: '#fff',
-        fontWeight: 'bold',
     },
     buttonContainer: {
         marginTop: 30,
