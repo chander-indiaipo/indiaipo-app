@@ -4,11 +4,15 @@ import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons'; // Import Ionicons
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'; // Import Ionicons
 import { ScrollView, TextInput, TouchableNativeFeedback } from 'react-native-gesture-handler';
+import ScheduleMeetingModal from '../components/ScheduleMeetingModal';
+import SchedulePersonMeetingModal from '../components/SchedulePersonMeetingModal';
 
 interface ServicesScreenProps {
     navigation: any;
 }
 interface ServicesScreenState {
+    showMeetingModal: boolean
+    showPersonMeetingModal: boolean
 }
 
 
@@ -17,6 +21,8 @@ class ServicesScreen extends Component<ServicesScreenProps, ServicesScreenState>
     constructor(props: ServicesScreenProps) {
         super(props);
         this.state = {
+            showMeetingModal: false,
+            showPersonMeetingModal: false,
         };
 
         // this.onNextPress = this.onNextPress.bind(this);
@@ -61,7 +67,7 @@ class ServicesScreen extends Component<ServicesScreenProps, ServicesScreenState>
                             </View>
                             <Text style={{ fontSize: 16, color: "#FF5733", fontWeight: 'bold', marginTop: 10 }}>Virtual{"\n"}Consultation</Text>
                             <Text style={{ fontSize: 14, color: "#666", marginTop: 5, marginBottom: 15 }}>Clarify your doubts via Zoom Meeting</Text>
-                            <TouchableNativeFeedback>
+                            <TouchableNativeFeedback onPress={() => this.setState({ showMeetingModal: true })}>
                                 <View style={{ paddingHorizontal: 15, paddingVertical: 5, backgroundColor: "#FF5733", borderRadius: 10, justifyContent: 'center', alignItems: 'center' }}>
                                     <Text style={{ fontSize: 16, color: "#fff" }}>Book Now</Text>
                                 </View>
@@ -80,7 +86,7 @@ class ServicesScreen extends Component<ServicesScreenProps, ServicesScreenState>
                             </View>
                             <Text style={{ fontSize: 16, color: "#04c204", fontWeight: 'bold', marginTop: 10 }}>In-Person{"\n"}Meeting</Text>
                             <Text style={{ fontSize: 14, color: "#666", marginTop: 5, marginBottom: 15 }}>Visit us for detailed analysis</Text>
-                            <TouchableNativeFeedback>
+                            <TouchableNativeFeedback onPress={() => this.setState({ showPersonMeetingModal: true })}>
                                 <View style={{ paddingHorizontal: 15, paddingVertical: 5, backgroundColor: "#04c204", borderRadius: 10, justifyContent: 'center', alignItems: 'center' }}>
                                     <Text style={{ fontSize: 16, color: "#fff" }}>Book Now</Text>
                                 </View>
@@ -300,6 +306,13 @@ class ServicesScreen extends Component<ServicesScreenProps, ServicesScreenState>
 
                     <View style={{ width: "100%", height: 50 }}></View>
                 </ScrollView>
+                <ScheduleMeetingModal
+                    visible={this.state.showMeetingModal}
+                    onClose={() => this.setState({ showMeetingModal: false })} onProceedToPayment={() => { }} />
+
+                <SchedulePersonMeetingModal
+                    visible={this.state.showPersonMeetingModal}
+                    onClose={() => this.setState({ showPersonMeetingModal: false })} onProceedToPayment={() => { }} />
             </View>
         );
     }
