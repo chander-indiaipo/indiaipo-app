@@ -38,6 +38,9 @@ class KycScreen extends Component<Props, State> {
         this.state = {
             isFocused: 0,
         };
+
+        this.onNextPress = this.onNextPress.bind(this);
+
     }
 
     handleFocus = (index: number) => {
@@ -47,6 +50,11 @@ class KycScreen extends Component<Props, State> {
     handleBlur = () => {
         this.setState({ isFocused: 0 });
     };
+
+    onNextPress() {
+        this.props.navigation.navigate("HomeScreen");
+        // this.props.getUsers();
+    }
 
     render() {
         const { isFocused } = this.state;
@@ -161,7 +169,7 @@ class KycScreen extends Component<Props, State> {
                     />
                 </View>
                 <View style={{ justifyContent: 'center', alignItems: 'center', alignSelf: 'center', width: "100%", paddingVertical: 20, position: 'absolute', bottom: 0 }}>
-                    <TouchableOpacity onPress={null} style={{ width: '100%' }}>
+                    <TouchableOpacity onPress={this.onNextPress} style={{ width: '100%' }}>
                         <View style={{ width: '100%', height: 55, backgroundColor: "#225cc7", borderRadius: 10, justifyContent: 'center', alignItems: 'center' }}>
                             <Text style={{ fontSize: 14, color: "#fff" }}>Create Account</Text>
                         </View>

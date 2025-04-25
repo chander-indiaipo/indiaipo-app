@@ -51,7 +51,7 @@ class OtpScreen extends Component<Props, State> {
     }
 
     onNextPress() {
-        this.props.navigation.navigate("HomeScreen");
+        this.props.navigation.navigate("KycScreen");
         // this.props.getUsers();
     }
 
